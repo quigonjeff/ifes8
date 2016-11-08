@@ -1,3 +1,14 @@
+## Project specific files:
+auto/*
+docs/*
+temp/*
+exemplo-ifes7-tcc-*.pdf
+*.loq
+todo.pdf
+todo.tex
+review-*.pdf
+review-*.tex
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -90,7 +101,7 @@ acs-*.bib
 # knitr
 *-concordance.tex
 # TODO Comment the next line if you want to keep your tikz graphics files
-*.tikz
+# *.tikz
 *-tikzDictionary
 
 # listings

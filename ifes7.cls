@@ -28,13 +28,39 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
-\LoadClass{abntex2}
+\LoadClass[12pt,a4paper,part=TITLE,chapter=TITLE,section=TITLE]{abntex2}
+
+\RequirePackage{hyperref}
+
+\RequirePackage{enumitem}
+
+\RequirePackage{ragged2e}
 
 
 %%% Configuração das margens do documento.
 \setlrmarginsandblock{3cm}{2cm}{*}
 \setulmarginsandblock{3cm}{2cm}{*}
 \checkandfixthelayout
+
+
+%%% Redefinição dos cabeçalhos
+\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+\makeheadrule{abntheadings}{0pt}{0pt}
+
+
+%%% Configuração do espaçamento entre títulos e texto
+%\setlength{\afterchapskip}{1cm}
+
+%%% Configuração do alinhamento da 1ª linha dos parágrafos.
+\setlength{\parindent}{0mm}
+
+%%% Espaçamento entre parágrafos
+\setlength{\parskip}{1\baselineskip}
+
+%%% Espaçamento entre itens de listas
+\setlist{parsep=\parskip,leftmargin=1.2em}
+
 
 
 %%% Configura a fonte para serifada (Latin Modern) ou sem serifa
@@ -52,12 +78,80 @@
 
 %%% Reconfiguração dos tamanhos das fontes de legendas para “fonte
 %%% reduzida”.
-% \captionnamefont{\ABNTEXfontereduzida}
-% \captiontitlefont{\ABNTEXfontereduzida}
+\captionnamefont{\ABNTEXfontereduzida}
+\captiontitlefont{\ABNTEXfontereduzida}
+
+
+%%% Formatação dos títulos: partes, capítulos, seções, subseções e
+%%% subsubseções
+\renewcommand{\ABNTEXchapterfont}{\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\fontseries{m}\selectfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\fontseries{m}\selectfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\fontshape{it}\selectfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+\addtolength{\cftlastnumwidth}{-1em}
+
+\cftsetindents{part}{0em}{\cftlastnumwidth}
+\cftsetindents{chapter}{0em}{\cftlastnumwidth}
+\cftsetindents{section}{0em}{\cftlastnumwidth}
+\cftsetindents{subsection}{0em}{\cftlastnumwidth}
+\cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
+\cftsetindents{paragraph}{0em}{\cftlastnumwidth}
+\cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
+% 
+\renewcommand{\tocprintchapter}{%
+  \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
+% 
+\renewcommand{\tocinnonumchapter}{%
+  \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
+  \cftinserthook{toc}{A}}
+% 
+\renewcommand{\tocprintchapternonum}{%
+  \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
+% 
+\renewcommand{\tocpartapendices}{%
+  \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+  \cftinserthook{toc}{A}}
+% 
+\renewcommand{\tocpartanexos}{%
+  \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+  \cftinserthook{toc}{A}}
+% 
+
+% 
+% Fontes das entradas do sumario
+% 
+\renewcommand{\cftpartfont}{\bfseries\normalsize}
+% 
+\renewcommand{\cftchapterfont}{\bfseries\normalsize}
+\renewcommand{\cftchapterpagefont}{\normalsize\cftchapterfont}
+% 
+\renewcommand{\cftsectionfont}{\bfseries\normalsize}
+\renewcommand{\cftsectionpagefont}{\cftsectionfont}
+% 
+\renewcommand{\cftsubsectionfont}{\normalsize}
+\renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
+% 
+\renewcommand{\cftsubsubsectionfont}{\normalsize}
+\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
+% 
+\renewcommand{\cftparagraphfont}{\normalsize}
+\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
+% 
+\setlength{\cftbeforechapterskip}{0em}
 
 
 %%% Nomes constantes
 \newcommand{\declaracaodoautorname}{Declara\c{c}\~{a}o do Autor}
+\newcommand{\listadeabreviaturasname}{Lista de abreviaturas}
+\renewcommand{\listadesiglasname}{Lista de siglas}
+\renewcommand{\listfigurename}{Lista de Figuras}
 
 %%% Comandos de dados
 \providecommand{\imprimircurso}{}
@@ -69,28 +163,87 @@
 %%% Numeração contínua de equações
 \counterwithout{equation}{chapter}
 
+
+% ---
+% Lista de abreviaturas e siglas
+\newenvironment{abreviaturas}{%
+  \pretextualchapter{\listadeabreviaturasname}
+  \begin{symbols}
+}{%
+  \end{symbols}
+  \cleardoublepage
+}
+% ---
+
+
+%%% ---
+%%% List of symbol
+\newenvironment{isymbols}{%
+  \list{}% empty label
+  {%
+    \setlength{\topsep}{\baselineskip}
+    \setlength{\partopsep}{0pt}
+    \setlength{\itemsep}{0.5\baselineskip}
+    \setlength{\parsep}{0pt}
+    \setlength{\leftmargin}{2em}
+    \setlength{\rightmargin}{0em}
+    \setlength{\listparindent}{1em}
+    \setlength{\itemindent}{0em}
+    \setlength{\labelwidth}{0em}
+    \setlength{\labelsep}{2em}
+  }
+}{\endlist}
+\newcommand{\simb}[1]{\item[#1]\mbox{}}
+%%% ---
+
+
+% ---
+% Lista de simbolos
+\renewenvironment{simbolos}{%
+  \pretextualchapter{\listadesimbolosname}
+  \begin{isymbols}
+}{%
+  \end{isymbols}
+  \cleardoublepage
+}
+% ---
+
+
+%%% Definição do ambiente `quadro' e do comando ----------------------
+%%% ---
+\newcommand{\listadequadrosname}{Lista de quadros}
+\newlistof{listadequadros}{loq}{\listadequadrosname}
+\newlistentry{quadro}{loq}{0}
+\newcommand{\quadroname}{Quadro}
+\newfloat{quadro}{loq}{\quadroname}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand{\cftquadroaftersnum}{\hfill\textendash\hfill}
+%%% ---
+
+
+
 %%% Redefinição do comando de impressão da capa
 \renewcommand{\imprimircapa}{%
   \begin{capa}
     \center
-    {\ABNTEXchapterfont\Large\MakeTextUppercase{\imprimirinstituicao}}\par
-    {\ABNTEXchapterfont\Large\MakeTextUppercase{\imprimircurso}}
-    
+    {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirinstituicao}}\\
+    \vspace{1.5cm}    
+    {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimircurso}}\\
+    %
+    \vspace{2.5cm}
+    %
+    {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
+    %
     \vspace*{2.5cm}
-
-    {\ABNTEXchapterfont\large\MakeTextUppercase{\imprimirautor}}
-
-    \vspace*{2.5cm}
-    
+    %
     \begin{center}
-      \ABNTEXchapterfont\bfseries\LARGE\MakeTextUppercase{\imprimirtitulo}
+      \ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}\\
     \end{center}
-    
+    %
     \vfill
-
-    \large\imprimirlocal
-
-    \large\imprimirdata
+    %
+    \ABNTEXsectionfontsize\imprimirlocal\\
+    \ABNTEXsectionfontsize\imprimirdata\\
 
     \vspace*{1cm}
   \end{capa}
@@ -103,40 +256,37 @@
 \makeatletter
 \renewcommand{\folhaderostocontent}{
   \begin{center}
-    {\ABNTEXchapterfont\Large\MakeTextUppercase{\imprimirautor}}
-
-    \vspace*{2.5cm}
-
-    {\ABNTEXchapterfont\bfseries\Large\MakeTextUppercase{\imprimirtitulo}}
-
-    \vspace*{\fill}
-
+    {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
+    %
+    \vspace{1.5cm}
+    %
+    {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}}\\
+    %
+    \vspace{\fill}
+    %
     \abntex@ifnotempty{\imprimirpreambulo}{%
       \hspace{.45\textwidth}
       \begin{minipage}{.5\textwidth}
         \SingleSpacing
-        \imprimirpreambulo
+        {\footnotesize{\imprimirpreambulo}}
       \end{minipage}%
     }%
-
-    \vspace{1.5cm}
-
+    \\%
+    \vspace{1cm}
+    %
     \hspace{0.45\textwidth}
     \begin{minipage}{0.5\textwidth}
-      {\large\imprimirorientadorRotulo~\imprimirorientador}
+      {\ABNTEXsectionfontsize\imprimirorientadorRotulo~\imprimirorientador}
       \abntex@ifnotempty{\imprimircoorientador}{%
         \par
-        {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+        {\ABNTEXsectionfontsize\imprimircoorientadorRotulo~\imprimircoorientador}%
       }
     \end{minipage}
-
+    \\%
     \vspace*{\fill}
-
-    {\large\imprimirlocal}
-  
-    \par
-  
-    {\large\imprimirdata}
+    %
+    {\ABNTEXsectionfontsize\imprimirlocal}\\
+    {\ABNTEXsectionfontsize\imprimirdata}
     \vspace*{1cm}
   \end{center}
 }
@@ -149,6 +299,17 @@
 }{\PRIVATEclearpageifneeded}
 % ---
 
+%%% Configura o pacote hyperref
+\makeatletter
+\hypersetup{
+  pdftitle={\@title},
+  pdfauthor={\@author},
+  pdfsubject={\imprimirpreambulo},
+  pdfkeywords={PALAVRAS}{CHAVE}{EM}{PORTUGUES},
+  pdfcreator={LaTeX with abnTeX2},
+  hidelinks
+}
+\makeatother
 
 
 \endinput
