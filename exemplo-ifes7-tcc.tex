@@ -1,5 +1,4 @@
-\documentclass[12pt,times,a4paper,english,brazil,
-chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
+\documentclass[times,english,brazil,oneside]{ifes7}
 
 \usepackage[utf8]{inputenc}
 \usepackage{lastpage}           % Usado pelo exemplo de ficha catalográfica
@@ -8,10 +7,11 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 \usepackage{morefloats}         % permite mais floats
 \usepackage{listings}
 \usepackage{blindtext}          % para gerar texto aleatório (dummy text)
-\usepackage{hyperref}
 \usepackage{tikz}
 \usetikzlibrary[topaths]
-\usepackage{mathtools}          % automaticamente inclui o pacote amsmath
+\usepackage{mathtools}
+\usepackage{xcolor}
+
 
 %%% Definição da linguagem padrão do documento (pacote babel) para
 %%% definir que certas porções do texto (como o resumo, por exemplo)
@@ -32,7 +32,7 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 \newcommand{\ifestex}{\textsf{Ifes$7$}}
 
 \titulo{Confecção de Monografias para Trabalhos de Conclusão de Curso
-  no Ifes --- \emph{Uma Abordagem utilizando Classes de Preparação de
+  no Ifes --- \emph{Uma Abordagem Utilizando Classes de Preparação de
     Documentos em \LaTeX2e}}
 
 \autor{Alunus Alunovisk Alunovich}
@@ -40,16 +40,16 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 
 \orientador{Prof. Dr. Jefferson O. Andrade}
 
-\coorientador{Prof. Dr. Fulano Detal}
+\coorientador{Prof.ª Dr.ª Fulana Detal Longname}
 
-\instituicao{Instituto Federal do Espírito Santo --- Campus Serra}
+\instituicao{Instituto Federal do Espírito Santo}
 
 \curso{Bacharelado em Sistemas de Informação}
 
-\data{Fevereiro de 2016}
+% \data{Fevereiro de 2016}
+\data{2016}
 
-\local{Serra -- ES}
-
+\local{Serra}
 
 \preambulo{Trabalho de Conclusão de Curso apresentado à Coordenadoria
   do Curso de Sistemas de Informação do Instituto Federal do Espírito
@@ -71,7 +71,7 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 \imprimirfolhaderosto*
 
 \begin{fichacatalografica}
-  \vspace*{15cm}
+  \vspace*{\fill}
   % Posição vertical
   \begin{center}
     % Minipage Centralizado
@@ -122,33 +122,29 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 %%% \includepdf{folhadeaprovacao_final.pdf}
 \begin{folhadeaprovacao}
   \begin{center}
-    {\ABNTEXchapterfont\large\imprimirautor}
-    \vspace*{\fill}\vspace*{\fill}
+    {\ABNTEXchapterfont\MakeTextUppercase{\imprimirautor}}\\
     \begin{center}
-      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+      \ABNTEXchapterfont\MakeTextUppercase{\imprimirtitulo}\\
     \end{center}
-    \vspace*{\fill}
     \hspace{.45\textwidth}
     \begin{minipage}{.5\textwidth}
-      \imprimirpreambulo
+      {\footnotesize{\imprimirpreambulo}}\\
     \end{minipage}%
-    \vspace*{\fill}
   \end{center}
-  
-  {\centering Trabalho aprovado. \imprimirlocal, 20 de fevereiro de 2016:}
-  
-  \assinatura{\textbf{\imprimirorientador} \\ \imprimirorientadorRotulo}
-  \assinatura{\textbf{\imprimircoorientador} \\ \imprimircoorientadorRotulo}
-  \assinatura{\textbf{Professor} \\ Convidado 1}
-  \assinatura{\textbf{Professor} \\ Convidado 2}
-  \assinatura{\textbf{Professor} \\ Convidado 3}
-  % \assinatura{\textbf{Professor} \\ Convidado 4}
+  \vspace{-1cm}%
   \begin{center}
-    \vspace*{0.5cm}
-    {\large\imprimirlocal}
-    \par
-    {\large\imprimirdata}
-    \vspace*{1cm}
+    Aprovado em 20 de fevereiro de 2016.\\[15mm]
+    \textbf{COMISSÃO EXAMINADORA}\\[5mm]
+    \assinatura{\imprimirorientador \\
+      Instituto Federal do Espírito Santo \\
+      Orientadora}\vspace{-1cm}
+    \assinatura{\imprimircoorientador \\
+      Instituto Federal do Espírito Santo \\
+      Coorientador}\vspace{-1cm}
+    \assinatura{Membro Convidado da Banca 1 \\
+      Instituição Externa 1}\vspace{-1cm}
+    \assinatura{Membro Convidado da Banca 2 \\
+      Instituição Externa 2}
   \end{center}
 \end{folhadeaprovacao}
 
@@ -168,7 +164,7 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 
   \centering
 
-  \imprimirlocal, \imprimirdata.
+  \imprimirlocal, 29 de setembro de 2016.
 
   \vspace*{2.5cm}
 
@@ -183,9 +179,11 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 %%% Ambiente para a escrita da dedicatória.
 \begin{dedicatoria}
   \vspace*{\fill}
-  Este trabalho é dedicado aos que acreditam que Pikachu sempre será o
-  melhor pokemon.
-  \vspace*{\fill}
+  \hspace{0.2\textwidth}
+  \begin{minipage}{0.8\textwidth}
+    Este trabalho é dedicado aos que acreditam que Pikachu sempre será o
+    melhor pokemon.
+  \end{minipage}
 \end{dedicatoria}
 
 
@@ -203,9 +201,10 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
   \vspace*{\fill}
   \begin{otherlanguage}{english}
     \begin{flushright}
-      \textit{People who think they know everything\\
-        are a great annoyance to those of us who do.\\
-        --- Isaac Asimov}
+      \begin{SingleSpace}
+        People who think they know everything are a great \\
+        annoyance to those of us who do. \cite{Asimov2004}
+      \end{SingleSpace}
     \end{flushright}
   \end{otherlanguage}
 \end{epigrafe}
@@ -222,6 +221,8 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
   necessário analisar o código fonte deste documento bem como ler a
   documentação da classe \abnTeX, na qual a classe \ifestex\ se
   baseia.
+
+  Palavras-chave: Palavra1. Palavra2. Palavra3. Palavra4.
 \end{resumo}
 
 %%% Ambiente para resumo em inglês.
@@ -236,11 +237,14 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
     study the source code of this document as well as read the
     documentation of the \abnTeX\ class, upon which the \ifestex\
     class is based.
+
+    Keywords: Keyword1. Keyword2. Keyword3. Keyword4.
   \end{otherlanguage}
 \end{resumo}
 
 
 %%% Lista de figuras
+\renewcommand{\listfigurename}{Lista de figuras}
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
@@ -252,22 +256,50 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 \cleardoublepage
 
 
-%%% Lista de abreviaturas e siglas
-\begin{siglas}
-\item[Ai.] Area of the $i^{th}$ component
-\item[456] Isto é um número
-\item[123] Isto é outro número
-\item[alunus] este é o meu nome
-\end{siglas}
+%%% Lista de quadros
+\pdfbookmark[0]{\listadequadrosname}{loq}
+\listadequadros*
 \cleardoublepage
+
+
+%%% Lista de abreviaturas
+\begin{abreviaturas}
+\item[abrev.] abreviatura
+\item[assoc.] associação
+\item[atm.] atmosfera
+\item[bel.] bacharel
+\item[bioq.] bioquímica
+\item[cit.] citação
+\item[compl.] complemento
+\item[dic.] dicionário
+\item[dipl.] diploma
+\end{abreviaturas}
+
+
+%%% Lista de siglas
+\begin{siglas}
+\item[ABNT] Associação Brasileira de Normas Técnicas
+\item[ACM] Association for Computing Machinery
+\item[APA] American Psychological Association
+\item[BIOS] Basic Input / Output System
+\item[CREA] Conselho Regional de Engenharia e Agronomia
+\item[IBGE] Instituto Brasileiro de Geografia e Estatística
+\item[IEEE] Institute of Electrical and Electronics Engineers
+\item[Ifes] Instituo Federal de Educação, Ciência e Tecnologia do
+  Espírito Santo
+\item[ISDN] Integrated Services Digital Network
+\item[RISC] Reduced Instruction Set Computer
+\end{siglas}
 
 
 %%% Lista de símbolos
 \begin{simbolos}
-\item[$ \Gamma $] Letra grega Gama
-\item[$ \Lambda $] Lambda
-\item[$ \zeta $] Letra grega minúscula zeta
-\item[$ \in $] Pertence
+\simb{$\Gamma$} Letra grega Gama
+\simb{$\Lambda$} Lambda
+\simb{$\zeta$} Letra grega minúscula zeta
+\simb{$\in$} Pertence
+\simb{$\top$} Valor lógico máximo dentro de um reticulado regular
+  booleano ou quasi-booleano.
 \end{simbolos}
 \cleardoublepage
 
@@ -282,13 +314,18 @@ chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
 %%% Início da parte textual do documento.
 \textual
 
+
+%%% Configuração do espaçamento entre títulos e texto
+\setlength{\afterchapskip}{1.5cm minus \baselineskip}
+
+
 \chapter{Introdução}
 \label{cha:introducao}
 
 O Instituto Federal do Espírito Santo (Ifes) normatiza definições de
 apresentação para trabalhos acadêmicos. À época da edição deste
-documento (fevereiro de 2016), a norma mais recente é a
-7ª edição, publicada em 2014 \cite{Ifes2014}.
+documento (fevereiro de 2016), a norma mais recente é a 7ª edição,
+publicada em 2014 \cite{Ifes2014}.
 
 Com o objetivo de facilitar tanto o trabalho dos alunos na preparação
 de seus Trabalhos de Conclusão de Curso (TCC), quanto o trabalho do
@@ -296,7 +333,9 @@ setor de bibliotecas, responsável pela validação da formatação dos
 trabalhos entregues, foi solicitado que o Ifes disponibilizasse uma
 classe e/ou modelo em \LaTeX\ que seguisse as normas de
 apresentação. Com esse objetivo foi iniciado o trabalho de construção
-da classe \ifestex.
+da classe \ifestex.\footnote{A título de esclarecimento, caso não seja
+  evidente, o autor deste documento é o Prof.\ Jefferson O.\ Andrade,
+  o estudante \emph{Alunus Alunovisk Alunovich} é fictício.}
 
 Este documento funciona ao mesmo tempo como manual e como modelo de
 TCC para a classe \ifestex. Esta classe é essencialmente uma
@@ -310,24 +349,16 @@ classe \ifestex.
 É altamente recomendável que os estudantes verifiquem, além da versão
 em PDF deste documento, também o seu código fonte em \LaTeX.
 
-\vspace{1.5cm}
-
-\noindent\textbf{Nota:} A título de esclarecimento, caso não seja
-evidente, o autor deste documento é o Prof.\ Jefferson O.\ Andrade,
-o estudante \emph{Alunus Alunovisk Alunovich} é fictício.
-
-
 \section{Uso Básico da Classe \ifestex}
 \label{sec:uso-basico}
 
 Para utilizar a classe \ifestex\ no seu trabalho acadêmico,
 evidentemente, você precisará informar ao \LaTeX\ que está usando a
 classe. Isso é feito colocando-se a declaração abaixo como a primeira
-linha de código do seu documento.
+linha de código do seu documento.\vspace{\baselineskip}
 
 \begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[12pt,times,a4paper,english,brazil,
-  chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}  
+  \documentclass[times,english,brazil]{ifes7}  
 \end{lstlisting}
 
 A opção \texttt{12pt} indica o tamanho padrão da fonte do texto,
@@ -356,7 +387,7 @@ usar a opção correspondente, como \texttt{french}, \texttt{spanish},
 etc. É importante notar que, quando mais de uma opção de linguagem é
 informada ao \texttt{babel} é preciso dizer ao babel no corpo do
 documento que língua usar. Isso é feito colocando-se a seguinte linha
-de código no documento:
+de código no documento:\vspace{\baselineskip}
 
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \selectlanguage{brazil}  
@@ -365,6 +396,35 @@ de código no documento:
 Além destas opções, qualquer opção válida para a classe \abnTeX\ pode
 ser passada na declaração \texttt{documentclass}. As opções
 específicas da classes \abnTeX\ serão passadas diretamente à ela.
+
+
+\section{Uma Seção para Testar Listas Não Ordenadas}
+
+\blindtext[1]
+
+\begin{itemize}
+\item Primiero item.
+\item Segundo item.
+  \begin{itemize}
+  \item Primeiro sub-item.
+  \item Segundo sub-item.
+    \begin{itemize}
+    \item Primeiro sub-sub-item.
+    \item Segundo sub-sub-item.
+    \item Terceiro sub-sub-item.
+      \begin{itemize}
+      \item Primeiro item do subnível 4.
+      \item Segundo item do subnível 4.
+      \end{itemize}
+    \item Quarto sub-sub-item.
+    \end{itemize}
+  \item Terceiro sub-item.
+  \end{itemize}
+\item Terceiro item.
+\item Quarto item.
+\end{itemize}
+
+\blindtext[2]
 
 
 \section{Uma Seção sem Propósito}
@@ -377,6 +437,42 @@ específicas da classes \abnTeX\ serão passadas diretamente à ela.
 \blindtext[2]
 
 \blindenumerate[5]
+
+\blindtext
+
+
+
+% ----------------------------------------------------------------------
+\chapter{Seção Primária}
+\label{cha:secao-primaria}
+
+\blindtext[1]
+
+\section{Seção Secundária}
+\label{sec:secao-secundaria}
+
+\blindtext[1]
+
+\subsection{Seção Terciária}
+\label{sec:secao-terciaria}
+
+\blindtext[1]
+
+\subsubsection{Seção Quaternária}
+\label{sec:secao-quaternaria}
+
+\blindtext[1]
+
+\paragraph{Seção Quinária}
+\label{sec:secao-quinaria}
+
+\blindtext[1]
+
+
+% ---------------------------------------------------------------------
+\chapter{Este é um Capítulo com Título Realmente Bastante
+  Longo para Verificar o Alinhamento}
+
 
 \blindtext
 
@@ -486,6 +582,9 @@ explicado em \cite[p.~41]{Araujo2016}.
       \midrule
       \midrule
       Maria da Silva & 11/11/1111 & 111.111.111-11 \\
+      Júlia da Silva & 12/11/1111 & 111.111.112-22 \\
+      Paulo da Silva & 13/11/1111 & 111.111.113-33 \\
+      Pedro da Silva & 14/11/1111 & 111.111.114-44 \\
       \bottomrule
     \end{tabular}%
   }{%
@@ -500,7 +599,7 @@ A Tabela~\ref{tabela-ibge}, é o mesmo exemplo apresentado no manual da
 classe \abnTeX, inserida aqui apenas a título de demonstração.
 
 
-\begin{table}[htb]
+\begin{quadro}[htb]
   \IBGEtab{
     \caption{Exemplo de uso de \texttt{cline} para formatação de
       tabelas.}
@@ -517,10 +616,9 @@ classe \abnTeX, inserida aqui apenas a título de demonstração.
       \hline
     \end{tabular}
   }{
-    \fonte{\LaTeX/Tables - Wikibooks, open books for an open
-      world. \url{https://en.wikibooks.org/wiki/LaTeX/Tables}}
+    \fonte{\LaTeX/Tables, Basic examples \cite{Wikibook-LaTeX}.}
   }
-\end{table}
+\end{quadro}
 
 A Tabela~\ref{tab:ex2} ilustra o resultado o uso do comando
 \verb!\cline! para criar linhas de separação (bordas) em apenas
@@ -553,8 +651,7 @@ colunas.
       \bottomrule
     \end{tabular}
   }{
-    \fonte{\LaTeX/Tables - Wikibooks, open books for an open
-      world. \url{https://en.wikibooks.org/wiki/LaTeX/Tables}}
+    \fonte{\LaTeX/Tables, Text wrapping in tables \cite{Wikibook-LaTeX}.}
   }
 \end{table}
 
@@ -580,7 +677,7 @@ figura.
 
 \begin{figure}[h]
   \centering
-  \caption{Diagrama de Venn indicando porque \LaTeX é melhor que M\$
+  \caption{Diagrama de Venn indicando porque \LaTeX{} é melhor que M\$
     Word.}
   \label{fig:ex1}
   \begin{tikzpicture}
@@ -594,8 +691,7 @@ figura.
     \node at ( 330:2)   {Coding};
     \node [font=\Large] {\LaTeX};
   \end{tikzpicture}
-  \fonte{A Venn Diagram for PDF blending | TikZ
-    example. \url{http://www.texample.net/tikz/examples/venn/}}
+  \fonte{A Venn Diagram for PDF blending \cite{Kottwitz2015}.}
   \nota{Este diagrama foi inteiramente feito com comandos \LaTeX,
     utilizando o pacote \texttt{tikz}, sem necessidade de qualquer
     outro software externo.}
@@ -644,8 +740,7 @@ doméstico e, caso se deseje, oferece extremo controle sobre todo o
       }
     }
   \end{tikzpicture}
-  \fonte{A complete graph | TikZ
-    example. \url{http://www.texample.net/tikz/examples/complete-graph/}}
+  \fonte{A complete graph \cite{Quintin2012}.}
   \nota{Novamente, o diagrama foi completamente gerado em \LaTeX, sem
     a necessidade de recorrer a softwares externos. Note-se que o
     grafo possui $\frac{16\cdot(16-1)}{2}= 120$ arestas, esse número de arestas
@@ -734,8 +829,7 @@ exemplo abaixo:
   inteligência coletiva do hiperespaço multiplicam e colocam em
   sinergia as competência. Dos design à estratégia, os cenários são
   alimentados pelas simulações e pelos dados colocados à disposição
-  pelo universo digital.\\
-  \hspace*{\fill}--- \citeonline{Levy1999}
+  pelo universo digital. \cite{Levy1999}
 \end{citacao}
 
 Note que toda citação deve vir acompanhada de sua referência
@@ -780,9 +874,60 @@ para que elas possam aparecer na seção de referências bibliográficas.
 %%% Referências Bibliográfica
 \bibliography{exemplo-ifes7}
 
+%%% Início dos apêndices ---------------------------------------------
+\apendices
+
+\partapendices*
+
+% --------------------------------------------------------------------
+\chapter{Demonstração do Teorema Loren Ipsum}
+
+\blindtext[7]
+
+
+% --------------------------------------------------------------------
+\chapter{Visão Geral de Indução Estrutural}
+
+\section{Princípio da Boa Ordenação}
+
+\blindtext[3]
+
+\section{Indução em Listas}
+
+\blindtext[2]
+
+\subsection{Estudo de Caso: Tamanho da Lista}
+
+\blindtext[2]
+
+\subsection{Estudo de Caso: Pesquisa em Lista}
+
+\blindtext[2]
+
+\section{Indução em Árvores}
+
+\blindtext[2]
+
+\subsection{Estudo de Caso: Cálculo de Profundidade}
+
+\blindtext[2]
+
+\subsection{Estudo de Caso: Pesquisa em Árvore}
+
+\blindtext[2]
+
+
+%%% Início dos anexos ------------------------------------------------
+\anexos
+
+\partanexos*
+
+\chapter{Exemplo de lombada}
+
+\hspace*{0mm}\fbox{\includegraphics[scale=0.8]{pics/normas-ifes-apendice-d.png}}
+
 
 \end{document}
-
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: t

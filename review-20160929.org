@@ -1,0 +1,217 @@
+#+TITLE: Notas Sobre a Revisão de 2016-09-29
+#+AUTHOR: Prof. Jefferson O. Andrade
+#+OPTIONS: toc:nil
+#+LaTeX_CLASS: koma-article
+#+LaTeX_HEADER:\usepackage[main=brazil]{babel}
+#+LaTeX_HEADER:\usepackage[a4paper,margin=25mm,bottom=30mm]{geometry}
+
+
+* Capa
+
+1. Há uma anotação que diz apenas “CH”. O que é isso?
+
+2. O item “Campus Serra” foi removido da identificação de
+   instituição. 
+   
+   Não haverá qualquer indicação de a qual campus o aluno pertence?
+   Por quê?
+
+3. Espaçamento entre instituição e curso foi ajustado para 1,5 cm.
+
+4. Todos os textos presentes na capa estão com fonte em tamanho 12pt,
+   conforme recomendado. (Já estavam antes.)
+
+5. A fonte usada na capa (neste exemplo) *não é* Arial/Heuvetica.
+
+   Este exemplo foi composto com fonte Times New/Latin Modern. Isso
+   inclui as fontes de títulos e da capa. Este entendimento advém do texto
+   do caderno de normas do Ifes (pag. 32):
+
+   #+begin_quote
+   todo o texto deve ser escrito em língua portuguesa e digitado em
+   fonte Arial ou Times New Roman, tamanho 12, inclusive a capa
+   (parte externa) e os elementos pré-textuais e pós-textuais (parte
+   interna). A opção da fonte escolhida deve ser adotada em todo o
+   texto.
+   #+end_quote
+
+   Assim, como o texto está em Latin Modern (Times), os títulos também
+   estão.
+
+6. As fontes de local e data já estão com tamanho 12pt.
+
+7. A distância entre local e data na folha de rosto foi ajustada para
+   1,5cm.
+
+8. O exemplo de uso da classe =ites7= foi alterado para impressão em
+   um só lado da folha.
+
+   A classe \LaTeX que está sendo gerada já funciona tanto para
+   impressão apenas em anverso quanto anverso e verso. Basta indicar o
+   parâmetro =oneside= ou =twoside= ao carregar a classe.
+
+* Pág. 1 -- Folha de Rosto
+
+1. O tamanho da fonte usada no preâmbulo (da folha de rosto) foi reduzido.
+
+2. O espaçamento entre o preâmbulo e a identificação do orientador e
+   coorientador era de 1,5cm, e foi reduzido para 1cm.
+
+* Pág. 2 -- Ficha Catalográfica
+
+1. A ficha catalográfica pode ser gerada de qualquer forma que se
+   deseje -- inclusive o MS Word. Desde que ela esteja em formato
+   PDF, ela poderá ser incluída arquivo final através do comando
+   =\includepdf[pages=X]{file.pdf}=. Onde =X= é o número da página
+   que se quer incluir e =file.pdf= é o nome do arquivo que contém a
+   página.
+
+   Assim, supondo que a ficha catalográfica foi gravada como a 1ª
+   página de um arquivo chamado =ficha.pdf=, tudo o que o aluno tem
+   que fazer é digitar o comando:\\
+   =\includepdf[page=1]{ficha.pdf}=, e a ficha será incluída no
+   trabalho dele.
+
+* Pág 3 -- Folha de Aprovação
+
+1. A formatação da folha de aprovação foi corrigida.
+
+   Houve um descuido meu com relação à folha de aprovação. Quando a
+   distância entre parágrafos foi alterada para 15mm, isso fez com
+   que a folha de aprovação acabou ocupando 2 páginas.
+
+2. A folha de aprovação foi ajustada para conformidade com o modelo
+   do Apêndice H.
+
+* Pág. 5 -- Declaração do Autor
+
+1. A data na declaração do autor foi ajustada para o formato longo,
+   “29 de setembro de 2016”.
+
+* Pág. 7 -- Dedicatória
+
+2. A dedicatória foi alinhada verticalmente para ficar no fundo da
+   página.
+
+3. Na dedicatória a margem esquerda foi incrementada de 20% da
+   largura do texto.
+
+* Pág. 11 -- Epígrafe
+
+1. A epígrafe está com espaçamento simples.
+
+* Pág. 13, 15 -- Resumo e Abstract
+
+1. Foram acrescentadas as palavras-chave e keywords.
+
+* Pág. 17
+
+1. O termo “Lista de Ilustrações” foi substituído por “Lista de Figuras”. 
+
+   Note-se, entretanto, que o título da seção 4.2.9 da norma ABNT
+   14724:2011 é *Lista de ilustrações* e no 1º parágrafo desta seção
+   lê-se: “\textbf{Quando necessário}, recomenda-se a elaboração de
+   lista própria para cada tipo de ilustração”.
+
+   Além disso, note-se também que na Seção 4 da ABNT NBR 14724:2011 o
+   Esquema 1, “Estrutura do trabalho acadêmico”, cita tanto o termo
+   “Lista de ilustrações”, quanto o termo “Lista de abreviaturas e
+   siglas”, como elementos pré-textuais. Conforme pode ser conferido
+   na reprodução do esquema abaixo:
+
+   [[./nbr14724-esquema1.png]]
+
+* Pág. 21
+
+1. A “Lista de abreviaturas e siglas” foi dividida em duas lista
+   separadas, a “Lista de abreviaturas” e a “Lista de siglas”
+
+* Pág. 23 -- Lista de Símbolos
+
+1. Na lista de símbolos o espaço entre o símbolo e a descrição foi
+   ajustado para 2 /em/ (duas vezes o tamanho da letra eme).
+
+* Pág. 25 -- Sumário
+
+1. O espaçamento extra para distinguir os capítulos no sumário foi
+   eliminado.
+
+   Entretanto, creio que houve um engano na anotação sobre o
+   sumário. Não há na pág. 2 da norma ABNT NBR 14724:2011 uma seção
+   “Estrutura”. A Seção “Estrutura” é a seção 4 na pág. 5. O
+   “Sumário” é tratando na Seção 4.2.1.13, pág. 8 e remete à norma
+   ABNT NBR 6027.
+
+   A norma ABNT NBR 6027:2012, “Informação e documentação - Sumário -
+   Apresentação”, no seu item 6.2 define que:
+
+   #+begin_quote
+   Recomenda-se que a subordinação dos itens do sumário seja destacada
+   com a mesma apresentação tipográfica utilizada nas seções do 
+   documento.
+   #+end_quote
+    
+   Uma vez que no corpo do texto os títulos de capítulos possuem
+   espaçamento diferenciado em relação aos demais títulos se seções,
+   sub-seções, etc. Pareceu de acordo com a norma também haver
+   espaçamento diferenciado no sumário.
+
+2. Foram acrescentados dois apêndices e um anexo. Antes dos início
+   dos apêndices foi inserida uma folha do o texto “APÊNDICES”
+   centralizado; de modo análogo, antes dos anexos foi inserida uma
+   folha com o texto “ANEXOS” centralizado. Esse comportamento segue
+   o que se verifica no livro de normas do Ifes, pág. 55.
+
+* Pág. 27
+
+1. O espaço entre a numeração de identificação dos títulos de
+   capítulos, seções, etc., é de um caracter “M” maiúsculo.
+
+2. O espaçamento entre parágrafos foi ajustado para a distância de 1
+   linha em branco -- ou seja, a distância entre o /baseline/ de duas
+   linha consecutivas dentro do mesmo parágrafo com espaçamento 
+   1,5 cm.
+
+   Entretanto, o Caderno de Normas do Ifes, na Seção 4.3.2, pág. 32,
+   diz: “Os parágrafos devem ser separados por um espaço de 1,5 cm
+   entre eles.”
+
+3. A “nota” da Introdução foi convertida em uma nota de rodapé.
+
+* Pág. 29
+
+1. O espaçamento entre itens das listas foi ajustado para o mesmo que
+   o espaçamento entre parágrafos.
+
+* Pág. 35
+
+2. Exemplo de seção senária foi removido.
+
+* Pág. 42
+
+1. O tamanho de fonte usado em “Fontes”, “Notas” e “Anotações” das
+   figuras e tabelas já estavam 10pt.
+
+2. O tamanho das fontes usadas nos títulos de figuras e tabelas
+   também foi ajustado para 10pt.
+
+3. Foram criados:
+   - O ambiente \LaTeX{} =quadro=, semelhante ao ambiente =table=, para
+     a criação de quadros.
+   - O comando \LaTeX{} =\listadequadros=, semelhante ao comando
+     =\listoftables=, para a criação automática da lista de quadros.
+
+* Pág. 44
+
+1. As URL foram removidas das legendas das figuras, tabelas e quadros,
+   e as referências apropriadas foram inseridas em seus lugares.
+
+* Pág. 47
+
+1. A referência foi ajustada em conformidade com o padrão.
+
+* Pág. 53
+
+1. Os itens da bibliografia estão formatados com o texto ajustado à
+   esquerda. Como pode ser observado, por exemplo, nos itens (ARAUJO,
+   2016), (GUARINO, 2012) e (MASOLO, 2012).

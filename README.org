@@ -1,5 +1,6 @@
-Classe LaTeX para Trabalhos Acadêmicos do Ifes
-==============================================
+#+TITLE: Classe LaTeX para Trabalhos Acadêmicos do Ifes
+#+AUTHOR: Jefferson O. Andrade
+#+OPTIONS: toc:nil
 
 Este repositório contém a classe para trabalhos acadêmicos em LaTeX
 que implementa as “Normas para Apresentação de Trabalhos Acadêmicos e
@@ -21,27 +22,26 @@ desta classe, seus comandos e algumas boas práticas para que o
 trabalho fique no formato desejado pela biblioteca.
 
 
-Instalação
-----------
+* Instalação
 
 A versão mais recente da classe pode sempre ser encontrada no GitHub.
 
-Utilização
-----------
+
+* Utilização
 
 A classe pode ser usada adicionando a linha
 
-``` tex
+#+BEGIN_SRC tex
 \documentclass[12pt,times,a4paper,english,brazil,
 chapter=TITLE,section=TITLE,subsection=TITLE]{ifes7}
-```
+#+END_SRC
 
 no início do documento LaTeX. O manual descreve as funcionalidades da
 classe. Dois modelos básicos prontos para compilação e alteração são
 disponibilizados no repositório.
 
-Licença
--------
+
+* Licença
 
 Released under the LaTeX Project Public License v1.3c or later See
 <http://www.latex-project.org/lppl.txt>.
