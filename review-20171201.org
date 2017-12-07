@@ -1,0 +1,100 @@
+#+TITLE: Notas sobre a Revisão de 2017-12-06
+#+AUTHOR: Prof. Jefferson O. Andrade
+#+OPTIONS: toc:nil
+#+LaTeX_CLASS: koma-article
+#+LaTeX_HEADER:\usepackage[main=brazil]{babel}
+#+LaTeX_HEADER:\usepackage[a4paper,margin=25mm,bottom=30mm]{geometry}
+
+
+Abaixo seguem as notas sobre os comentários feitos na revisão de 2017-12-01. Os
+comentários dos revisores foram feitos diretamente no documento PDF. A numeração
+de página indicada nos títulos abaixo se refere à paginação do documento onde os
+comentários foram feitos. Após as alterações solicitadas a numeração das páginas
+(no documento novo) foi alterada.
+
+* Capa (Página 1)
+
+  - A distância entre o nome do instituto e o nome do curso foi alterada para
+    1,5 entrelinhas. Alteração realizada na classe.
+
+
+* Folha de Rosto (Página 2)
+
+  - Foi solicitado que o título do trabalho fosse impresso mas próximo do centro
+    vertical da página. Deste modo, a distância entre o nome do aluno e o título
+    do trablaho foi aumentada de 1,5cm para 4,5cm.
+
+  - O texto do preambulo já está com espaçamento entrelinhas simples.
+
+
+* Folha de Aprovação (Página 4)
+
+  - O texto do preambulo já está com espaçamento entrelinhas simples.
+
+
+* Lista de Abreviaturas (Página 14)
+
+  - As abreviaturas e seus significados foram ajustados para inicial maiúscula,
+    conforme indicado.
+
+  - Foi acrescentado um hífen entre a abreviatura e seu significado, conforme
+    indicado.
+
+
+* Lista de Siglas (Página 15)
+
+  - Foi acrescentado um hífen entre a sigla e seu significado, conforme
+    indicado.
+
+
+* Lista de Símbolos (Página 16)
+
+  - Foi acrescentado um hífen entre o símbolo e seu significado, conforme
+    indicado.
+
+
+* Sumário (Página 17)
+
+  - A contagem de páginas foi ajustada para ignorar a capa e a ficha
+    catalográfica. Desta forma a primeira página textual passou a ser a página
+    15 ao invés de 17 como estava anteriormente.
+
+  - No sumário, foi removida a formatação em negrito nas seções secundárias,
+    terciárias, quaternárias e quinárias.
+
+  - Na construção do Sumário, apêndices e anexos são tratados pelo \LaTeX
+    exatamente da mesma forma que capítulos. Desta forma, não existe um
+    mecanismo simples para formatá-los de modo diferentes dos capítulos. Será
+    necessário reimplementar a forma como o Sumário é construído. Esse
+    procedimento é moderadamente complexo e levará algumas semanas.
+
+
+* Capítulo 1 -- Introdução (Página 17)
+
+  - A contagem de páginas já foi ajustada para ignorar a capa e a ficha
+    catalográfica, deste modo o número da primeira página textual é 15, conforme
+    indicado.
+
+  - A distância entre o título dos capítulos e o texto foi alterada para 1,5
+    entrelinhas, conforme solicitado.
+
+  - A formatação das entradas para seções secundárias, terciárias, quaternárias,
+    e quinárias foi alterada conforme indicado.
+
+
+* Capítulo 2 -- Seção Primária (Página 24)
+
+  - O espaçamento entre os títulos dos capítulos e o texto foi ajustado conforme
+    indicado (1,5 baseline) para todos os capítulos.
+
+
+* Tabela 1 (Página 29)
+
+  - Foi incluído o ano na linha “Fonte”, conforme solicitado.
+
+
+* Variáveis local                                                  :noexport:
+
+# Local Variables:
+# ispell-local-dictionary: "brasileiro"
+# End:

@@ -12,7 +12,7 @@
 %%% Data: 2016-02-14
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{tccifes}[2016/03/25 Classe de trabalhos acadêmicos do Ifes]
+\ProvidesClass{ifes7}[2016/03/25 Classe de trabalhos acadêmicos do Ifes]
 
 \RequirePackage{ifthen}
 
@@ -97,54 +97,58 @@
 
 \addtolength{\cftlastnumwidth}{-1em}
 
-\cftsetindents{part}{0em}{\cftlastnumwidth}
-\cftsetindents{chapter}{0em}{\cftlastnumwidth}
-\cftsetindents{section}{0em}{\cftlastnumwidth}
-\cftsetindents{subsection}{0em}{\cftlastnumwidth}
-\cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
-\cftsetindents{paragraph}{0em}{\cftlastnumwidth}
-\cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
-% 
-\renewcommand{\tocprintchapter}{%
-  \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
-% 
-\renewcommand{\tocinnonumchapter}{%
-  \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
-  \cftinserthook{toc}{A}}
-% 
-\renewcommand{\tocprintchapternonum}{%
-  \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
-% 
-\renewcommand{\tocpartapendices}{%
-  \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
-  \cftinserthook{toc}{A}}
-% 
-\renewcommand{\tocpartanexos}{%
-  \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
-  \cftinserthook{toc}{A}}
-% 
+\ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
+  
+  \cftsetindents{part}{0em}{\cftlastnumwidth}
+  \cftsetindents{chapter}{0em}{\cftlastnumwidth}
+  \cftsetindents{section}{0em}{\cftlastnumwidth}
+  \cftsetindents{subsection}{0em}{\cftlastnumwidth}
+  \cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
+  \cftsetindents{paragraph}{0em}{\cftlastnumwidth}
+  \cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
+  % 
+  \renewcommand{\tocprintchapter}{%
+    \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
+  % 
+  \renewcommand{\tocinnonumchapter}{%
+    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
+    \cftinserthook{toc}{A}}
+  % 
+  \renewcommand{\tocprintchapternonum}{%
+    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
+  % 
+  \renewcommand{\tocpartapendices}{%
+    \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+    \cftinserthook{toc}{A}}
+  % 
+  \renewcommand{\tocpartanexos}{%
+    \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+    \cftinserthook{toc}{A}}
+  % 
 
-% 
-% Fontes das entradas do sumario
-% 
-\renewcommand{\cftpartfont}{\bfseries\normalsize}
-% 
-\renewcommand{\cftchapterfont}{\bfseries\normalsize}
-\renewcommand{\cftchapterpagefont}{\normalsize\cftchapterfont}
-% 
-\renewcommand{\cftsectionfont}{\bfseries\normalsize}
-\renewcommand{\cftsectionpagefont}{\cftsectionfont}
-% 
-\renewcommand{\cftsubsectionfont}{\normalsize}
-\renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
-% 
-\renewcommand{\cftsubsubsectionfont}{\normalsize}
-\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
-% 
-\renewcommand{\cftparagraphfont}{\normalsize}
-\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
-% 
-\setlength{\cftbeforechapterskip}{0em}
+  % 
+  % Fontes das entradas do sumario
+  % 
+  \renewcommand{\cftpartfont}{\bfseries\normalsize}
+  % 
+  \renewcommand{\cftchapterfont}{\bfseries\normalsize}
+  \renewcommand{\cftchapterpagefont}{\cftchapterfont}
+  % 
+  \renewcommand{\cftsectionfont}{\mdseries\normalsize}
+  \renewcommand{\cftsectionpagefont}{\cftsectionfont}
+  % 
+  \renewcommand{\cftsubsectionfont}{\mdseries\normalsize}
+  \renewcommand{\cftsubsectionpagefont}{\mdseries\cftsubsectionfont}
+  % 
+  \renewcommand{\cftsubsubsectionfont}{\mdseries\normalsize}
+  \renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
+  % 
+  \renewcommand{\cftparagraphfont}{\mdseries\normalsize}
+  \renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
+  % 
+  \setlength{\cftbeforechapterskip}{0em}
+
+}{}
 
 
 %%% Nomes constantes
@@ -227,7 +231,7 @@
   \begin{capa}
     \center
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirinstituicao}}\\
-    \vspace{1.5cm}    
+    \vspace{1\baselineskip}
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimircurso}}\\
     %
     \vspace{2.5cm}
@@ -258,7 +262,7 @@
   \begin{center}
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
     %
-    \vspace{1.5cm}
+    \vspace{4.5cm}
     %
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}}\\
     %

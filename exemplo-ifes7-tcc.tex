@@ -67,6 +67,7 @@
 %%% \pretextual
 
 \imprimircapa
+\addtocounter{page}{-1}
 
 \imprimirfolhaderosto*
 
@@ -112,7 +113,7 @@
     }
   \end{center}
 \end{fichacatalografica}
-
+\addtocounter{page}{-1}
 
 %%% ====================================================================
 %%% Exemplo de construção da folha de aprovação. Depois da
@@ -264,42 +265,40 @@
 
 %%% Lista de abreviaturas
 \begin{abreviaturas}
-\item[abrev.] abreviatura
-\item[assoc.] associação
-\item[atm.] atmosfera
-\item[bel.] bacharel
-\item[bioq.] bioquímica
-\item[cit.] citação
-\item[compl.] complemento
-\item[dic.] dicionário
-\item[dipl.] diploma
+  \simb{Abrev.} -- Abreviatura
+  \simb{Assoc.} -- Associação
+  \simb{Atm.} -- Atmosfera
+  \simb{Bel.} -- Bacharel
+  \simb{Bioq.} -- Bioquímica
+  \simb{Cit.} -- Citação
+  \simb{Compl.} -- Complemento
+  \simb{Dic.} -- Dicionário
+  \simb{Dipl.} -- Diploma
 \end{abreviaturas}
 
 
 %%% Lista de siglas
 \begin{siglas}
-\item[ABNT] Associação Brasileira de Normas Técnicas
-\item[ACM] Association for Computing Machinery
-\item[APA] American Psychological Association
-\item[BIOS] Basic Input / Output System
-\item[CREA] Conselho Regional de Engenharia e Agronomia
-\item[IBGE] Instituto Brasileiro de Geografia e Estatística
-\item[IEEE] Institute of Electrical and Electronics Engineers
-\item[Ifes] Instituo Federal de Educação, Ciência e Tecnologia do
-  Espírito Santo
-\item[ISDN] Integrated Services Digital Network
-\item[RISC] Reduced Instruction Set Computer
+  \simb{ABNT} -- Associação Brasileira de Normas Técnicas
+  \simb{ACM} -- Association for Computing Machinery
+  \simb{APA} -- American Psychological Association
+  \simb{BIOS} -- Basic Input / Output System
+  \simb{CREA} -- Conselho Regional de Engenharia e Agronomia
+  \simb{IBGE} -- Instituto Brasileiro de Geografia e Estatística
+  \simb{IEEE} -- Institute of Electrical and Electronics Engineers
+  \simb{Ifes} -- Instituo Federal de Educação, Ciência e Tecnologia do Espírito Santo
+  \simb{ISDN} -- Integrated Services Digital Network
+  \simb{RISC} -- Reduced Instruction Set Computer
 \end{siglas}
 
 
 %%% Lista de símbolos
 \begin{simbolos}
-\simb{$\Gamma$} Letra grega Gama
-\simb{$\Lambda$} Lambda
-\simb{$\zeta$} Letra grega minúscula zeta
-\simb{$\in$} Pertence
-\simb{$\top$} Valor lógico máximo dentro de um reticulado regular
-  booleano ou quasi-booleano.
+  \simb{$\Gamma$} -- Letra grega Gama
+  \simb{$\Lambda$} -- Lambda
+  \simb{$\zeta$} -- Letra grega minúscula zeta
+  \simb{$\in$} -- Pertence
+  \simb{$\top$} -- Valor lógico máximo dentro de um reticulado regular booleano ou quasi-booleano.
 \end{simbolos}
 \cleardoublepage
 
@@ -316,7 +315,7 @@
 
 
 %%% Configuração do espaçamento entre títulos e texto
-\setlength{\afterchapskip}{1.5cm minus \baselineskip}
+\setlength{\afterchapskip}{0\baselineskip}
 
 
 \chapter{Introdução}
@@ -588,7 +587,7 @@ explicado em \cite[p.~41]{Araujo2016}.
       \bottomrule
     \end{tabular}%
   }{%
-    \fonte{Produzido pelos autores}%
+    \fonte{Produzido pelos autores, 2017}%
     \nota{Esta é uma nota, que diz que os dados são baseados na
       regressão linear.}%
     \nota[Anotações]{Uma anotação adicional, seguida de várias outras.}%
