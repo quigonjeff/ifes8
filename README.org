@@ -1,3 +1,4 @@
+# -*- mode: Org; ispell-local-dictionary: "brasileiro"; -*-
 #+TITLE: Classe LaTeX para Trabalhos Acadêmicos do Ifes
 #+AUTHOR: Jefferson O. Andrade
 #+OPTIONS: toc:nil
@@ -52,8 +53,3 @@ Released under the LaTeX Project Public License v1.3c or later See
 <http://www.latex-project.org/lppl.txt>.
 
 
-* Configurações                                                    :noexport:
-
-# Local Variables:
-# ispell-local-dictionary: "brasileiro"
-# End:
