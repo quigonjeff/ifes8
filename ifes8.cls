@@ -2,17 +2,17 @@
 %%% Instituto Federal do Espírito Santo (Ifes). Em conformidade com as
 %%% normas estabelecidas no documento “Normas para Apresentação de
 %%% Trabalhos Acadêmicos e Científicos: Documento Impresso e/ou
-%%% Digital”, 7ª edição -- 2014.
+%%% Digital”, 8ª edição -- nov/2017.
 %%% 
 %%% Esta classe é baseada na classe abnTeX2 versão 1.9.6 de 26 de
 %%% fevereiro de 2016 [http://www.abntex.net.br/], que por sua vez é
 %%% baseada na classe memoir.
 %%% 
 %%% Autor: Prof. Jefferson O. Andrade <jefferson.andrade@ifes.edu.br>
-%%% Data: 2016-02-14
+%%% Data: 2018-02-22
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{ifes7}[2016/03/25 Classe de trabalhos acadêmicos do Ifes]
+\ProvidesClass{ifes8}[2018/02/22 Classe de trabalhos acadêmicos do Ifes]
 
 \RequirePackage{ifthen}
 
