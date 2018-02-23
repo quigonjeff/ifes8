@@ -95,6 +95,19 @@
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\fontshape{it}\selectfont}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
 
+
+%%% Converte o título das seções para maiúsculas na TOC.
+%%% Infelizmente, não funciona para seções. Vide manual da classe memoir.
+% \makeatletter
+% \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
+%   \settocpreprocessor{section}{%
+%     \let\tempf@rtoc\f@rtoc%
+%     \def\f@rtoc{%
+%       \texorpdfstring{\MakeTextUppercase{\tempf@rtoc}}{\tempf@rtoc}}%
+%   }
+% }{}
+% \makeatother
+
 \addtolength{\cftlastnumwidth}{-1em}
 
 \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
@@ -137,13 +150,13 @@
   \renewcommand{\cftsectionfont}{\mdseries\normalsize}
   \renewcommand{\cftsectionpagefont}{\cftsectionfont}
   % 
-  \renewcommand{\cftsubsectionfont}{\mdseries\normalsize}
+  \renewcommand{\cftsubsectionfont}{\bfseries\normalsize}
   \renewcommand{\cftsubsectionpagefont}{\mdseries\cftsubsectionfont}
   % 
   \renewcommand{\cftsubsubsectionfont}{\mdseries\normalsize}
   \renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
   % 
-  \renewcommand{\cftparagraphfont}{\mdseries\normalsize}
+  \renewcommand{\cftparagraphfont}{\itshape\mdseries\normalsize}
   \renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
   % 
   \setlength{\cftbeforechapterskip}{0em}

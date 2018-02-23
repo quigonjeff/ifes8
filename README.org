@@ -46,6 +46,11 @@ no início do documento LaTeX. O manual descreve as funcionalidades da
 classe. Dois modelos básicos prontos para compilação e alteração são
 disponibilizados no repositório.
 
+*Importante:* Note que, até o momento, nem todas as formatações foram incluídas
+na classe, portanto é importante que o usuário consulte o exemplo dado e siga a
+mesma estrutura. E *não remova* nenhum dos comandos que são definidos dentro do
+exemplo.
+
 
 * Licença
 

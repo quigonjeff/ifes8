@@ -24,12 +24,18 @@
 \selectlanguage{brazil}
 
 
+%%% O código abaixo é um RTP (Recurso Técnico Provisório, vulgo gambiarra) para
+%%% fazer com que os títulos de seções ficassem em maiúsculas na TOC (Sumário).
+\let\originalsection\section
+\renewcommand{\section}[1]{\originalsection{\MakeTextUppercase{#1}}}
+
+
+
 %%% Define que todos os códigos fontes construídos com o ambiente
 %%% `lstlisting' terão uma borda simples.
 \lstset{frame=single}
 
-
-\newcommand{\ifestex}{\textsf{Ifes$7$}}
+\newcommand{\ifestex}{\textsf{Ifes$8$}}
 
 \titulo{Confecção de Monografias para Trabalhos de Conclusão de Curso
   no Ifes --- \emph{Uma Abordagem Utilizando Classes de Preparação de
@@ -134,7 +140,7 @@
   \end{center}
   \vspace{-1cm}%
   \begin{center}
-    Aprovado em 20 de fevereiro de 2016.\\[15mm]
+    Aprovado em 20 de fevereiro de 2018.\\[15mm]
     \textbf{COMISSÃO EXAMINADORA}\\[5mm]
     \assinatura{\imprimirorientador \\
       Instituto Federal do Espírito Santo \\
@@ -165,7 +171,7 @@
 
   \centering
 
-  \imprimirlocal, 29 de setembro de 2016.
+  \imprimirlocal, 29 de setembro de 2018.
 
   \vspace*{2.5cm}
 
@@ -323,8 +329,8 @@
 
 O Instituto Federal do Espírito Santo (Ifes) normatiza definições de
 apresentação para trabalhos acadêmicos. À época da edição deste
-documento (fevereiro de 2016), a norma mais recente é a 7ª edição,
-publicada em 2014 \cite{Ifes2014}.
+documento (fevereiro de 2018), a norma mais recente é a 8ª edição,
+publicada em novembro de 2017 \cite{Ifes2017}.
 
 Com o objetivo de facilitar tanto o trabalho dos alunos na preparação
 de seus Trabalhos de Conclusão de Curso (TCC), quanto o trabalho do
@@ -342,7 +348,7 @@ customização da classe \abnTeX\ \cite{abntex2classe} -- que, por sua
 vez, é uma extensão da classe \texttt{memoir}. Deste modo, este
 manual/modelo, vai buscar, na medida do possível, não repetir o que já
 está disponível no manual do \abnTeX\ ou nas normas do Ifes
-\cite{Ifes2014}, e se concentrar no que é novo e/ou diferente na
+\cite{Ifes2017}, e se concentrar no que é novo e/ou diferente na
 classe \ifestex.
 
 É altamente recomendável que os estudantes verifiquem, além da versão
@@ -361,10 +367,10 @@ linha de código do seu documento.\vspace{\baselineskip}
 \end{lstlisting}
 
 A opção \texttt{12pt} indica o tamanho padrão da fonte do texto,
-conforme estabelecido pelas normas do Ifes \cite[pp.~20]{Ifes2014}.
+conforme estabelecido pelas normas do Ifes \cite[pp.~20]{Ifes2017}.
 
 A opção \texttt{a4paper} estabelece o uso de papel tamanho A4,
-conforme definido em \cite[pp.~19]{Ifes2014}.
+conforme definido em \cite[pp.~19]{Ifes2017}.
 
 A opção \texttt{times} não é explicitamente necessária uma vez que ela
 é o padrão. Essa opção faz com que a fonte padrão do documento seja
@@ -516,7 +522,7 @@ uma introdução rápida a este suporte.
 A classe \ifestex\ redefine os comandos \verb!\imprimircapa! e
 \verb!\folhaderostocontent! para adequar a capa e a folha de rosto aos
 modelos indicados nos apêndices C e E, respectivamente, das normas do
-Ifes \cite{Ifes2014}.
+Ifes \cite{Ifes2017}.
 
 
 
@@ -545,7 +551,7 @@ capítulos em dois ou mais. Entretanto, não é comum haver um número
 muito grande de capítulos.
 
 A formatação dos títulos das seções do trabalho seguem as diretrizes
-indicadas 4.3.7.1 das normas do Ifes \cite[p.~34]{Ifes2014}.
+indicadas 4.3.7.1 das normas do Ifes \cite[p.~34]{Ifes2017}.
 % , e a
 % formatação dos títulos segue o seguinte esquema:
 
@@ -794,7 +800,7 @@ que a anterior.
 
 A Equação~(\ref{eq:3}) demonstra uma equação que foi fragmentada em
 mais de uma linha. As normas do Ifes determinam que
-\cite[p.~38]{Ifes2014}:
+\cite[p.~38]{Ifes2017}:
 
 \begin{citacao}
   Recomenda-se que, em caso de fragmentação em mais de uma linha, por
@@ -835,7 +841,7 @@ Note que toda citação deve vir acompanhada de sua referência
 bibliográfica, que pode aparecer ao final da citação, como no exemplo
 acima, ou pode preceder a citação no texto que a introduz, como é
 demonstrado no exemplo dado na seção 5.1.1 das normas do Ifes
-\cite[p.~39]{Ifes2014}.
+\cite[p.~39]{Ifes2017}.
 
 Os demais estilos de citação direta, e as citações indiretas, não
 necessitam de qualquer tipo de formatação particular do texto,
@@ -857,7 +863,7 @@ para que elas possam aparecer na seção de referências bibliográficas.
 \cite{abntex2classe}, \cite{abntex2-wiki-como-customizar},
 \cite{abntex2modelo-artigo}, \cite{abntex2modelo-relatorio},
 \cite{abntex2modelo}, \cite{abntex2cite}, \cite{abntex2cite-alf},
-\cite{Ifes2014}, \cite{NBR6024:2012}, \cite{araujo2012},
+\cite{Ifes2017}, \cite{NBR6024:2012}, \cite{araujo2012},
 \cite{talbot2012}, \cite{NBR14724:2011}, \cite{EIA649B},
 \cite{bates2010}, \cite{memoir}, \cite{masolo2010}, \cite{babel},
 \cite{NBR14724:2005}, \cite{macedo2005}, \cite{guizzardi2005},
@@ -865,16 +871,28 @@ para que elas possam aparecer na seção de referências bibliográficas.
 \cite{NBR14724:2001}, \cite{guarino1995}, \cite{ibge1993},
 \cite{van86}, \cite{dewey1980}, \cite{doxiadis1965}.
 
+\section{Análises}
+
+\blindtext[7]
+
+\section{Trabalhos Futuros}
+
+\blindtext[7]
+
+
 %%% ====================================================================
 %%% Início da parte pós-textual do documento.
 \postextual
 
 
 %%% Referências Bibliográfica
-\bibliography{exemplo-ifes7}
+\bibliography{referencias}
 
 %%% Início dos apêndices ---------------------------------------------
 \apendices
+%%% A linha abaixo impede que as seções, subseções, etc. dos apêndices e anexos
+%%% sejam mostradas no Sumário.
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
 \partapendices*
 
