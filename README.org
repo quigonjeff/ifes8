@@ -5,7 +5,7 @@
 Este repositório contém a implementação de uma classe \LaTeX{} para trabalhos
 acadêmicos em conformidade com as 
 /“Normas para Apresentação de Trabalhos Acadêmicos e Científicos: Documento Impresso e/ou Digital”/, 
-*8ª edição revista e ampliada*, de Novembro de 2074 do /Instituto Federal do Espírito Santo/ (Ifes). 
+*8ª edição revista e ampliada*, de Novembro de 2017 do /Instituto Federal do Espírito Santo/ (Ifes). 
 A classe possibilita a criação de um trabalho acadêmico completo, com inserção de
 elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe,
 dedicatória, sumário e listas de figuras, tabelas, algoritmos, siglas e
