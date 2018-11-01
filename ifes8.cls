@@ -244,7 +244,7 @@
   \begin{capa}
     \center
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirinstituicao}}\\
-    \vspace{1\baselineskip}
+    %\vspace{1\baselineskip}
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimircurso}}\\
     %
     \vspace{2.5cm}
@@ -262,53 +262,9 @@
     \ABNTEXsectionfontsize\imprimirlocal\\
     \ABNTEXsectionfontsize\imprimirdata\\
 
-    \vspace*{1cm}
+    %\vspace*{1cm}
   \end{capa}
 }
-
-
-% ---
-% Conteudo padrao da Folha de Rosto
-\makeatletter
-\renewcommand{\folhaderostocontent}{
-  \begin{center}
-
-    % \vspace*{1cm}
-    {\ABNTEXchapterfont\large\imprimirautor}
-	
-    \vspace*{\fill}\vspace*{\fill}
-    \begin{center}
-      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-    \end{center}
-    \vspace*{\fill}
-	
-    \abntex@ifnotempty{\imprimirpreambulo}{%
-      \hspace{.45\textwidth}
-      \begin{minipage}{.5\textwidth}
-      	\SingleSpacing
-         \imprimirpreambulo
-       \end{minipage}%
-       \vspace*{\fill}
-    }%
-
-    {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-
-    {\large\imprimirorientadorRotulo~\imprimirorientador\par}
-    \abntex@ifnotempty{\imprimircoorientador}{%
-       {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-    }%
-    \vspace*{\fill}
-
-    {\large\imprimirlocal}
-    \par
-    {\large\imprimirdata}
-    % \vspace*{1cm}
-
-  \end{center}
-}
-\makeatother
-
-
 
 %%% Redefinição do comando de impressão da folha de rosto.
 %%% Para esta parte do código é necessário que o caracter arroba `@'
@@ -316,13 +272,16 @@
 \makeatletter
 \renewcommand{\folhaderostocontent}{
   \begin{center}
+    \center
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
     %
     \vspace{4.5cm}
     %
+    \begin{center}
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}}\\
+    \end{center}
     %
-    \vspace{\fill}
+    \vfill
     %
     \abntex@ifnotempty{\imprimirpreambulo}{%
       \hspace{.45\textwidth}
@@ -332,7 +291,7 @@
       \end{minipage}%
     }%
     \\%
-    \vspace{1cm}
+    \vspace{0.5cm}
     %
     \hspace{0.45\textwidth}
     \begin{minipage}{0.5\textwidth}
@@ -343,11 +302,11 @@
       }
     \end{minipage}
     \\%
-    \vspace*{\fill}
+    \vfill
     %
+    \vspace*{1.5cm}
     {\ABNTEXsectionfontsize\imprimirlocal}\\
-    {\ABNTEXsectionfontsize\imprimirdata}
-    \vspace*{1cm}
+    {\ABNTEXsectionfontsize\imprimirdata}\\
   \end{center}
 }
 \makeatother
