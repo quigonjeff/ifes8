@@ -246,7 +246,7 @@
   \begin{capa}
     \center
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirinstituicao}}\\
-%    \vspace{1\baselineskip}
+    %\vspace{1\baselineskip}
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimircurso}}\\
     %
     \vspace{3.0cm}
@@ -264,10 +264,9 @@
     \ABNTEXsectionfontsize\imprimirlocal\\
     \ABNTEXsectionfontsize\imprimirdata\\
 
-    \vspace*{1cm}
+    %\vspace*{1cm}
   \end{capa}
 }
-
 
 %%% Redefinição do comando de impressão da folha de rosto.
 %%% Para esta parte do código é necessário que o caracter arroba `@'
@@ -280,9 +279,11 @@
     %
     \vspace{4.5cm}
     %
+    \begin{center}
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}}\\
+    \end{center}
     %
-    \vspace{\fill}
+    \vfill
     %
     \abntex@ifnotempty{\imprimirpreambulo}{%
       \hspace{.45\textwidth}
@@ -292,7 +293,7 @@
       \end{minipage}%
     }%
     \\%
-    \vspace{1cm}
+    \vspace{0.5cm}
     %
     \hspace{0.45\textwidth}
     \begin{minipage}{0.5\textwidth}
@@ -303,11 +304,11 @@
       }
     \end{minipage}
     \\%
-    \vspace*{\fill}
+    \vfill
     %
+    \vspace*{1.5cm}
     {\ABNTEXsectionfontsize\imprimirlocal}\\
-    {\ABNTEXsectionfontsize\imprimirdata}
-    \vspace*{1cm}
+    {\ABNTEXsectionfontsize\imprimirdata}\\
   \end{center}
 }
 \makeatother
