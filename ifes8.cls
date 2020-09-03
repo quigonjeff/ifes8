@@ -12,7 +12,7 @@
 %%% Data: 2018-02-22
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{ifes8}[2018/02/22 Classe de trabalhos acadêmicos do Ifes]
+\ProvidesClass{ifes8}[2018/02/22 Classe de trabalhos academicos do Ifes]
 
 \RequirePackage{ifthen}
 
@@ -28,13 +28,15 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
-\LoadClass[12pt,a4paper,part=TITLE,chapter=TITLE,section=TITLE]{abntex2}
+\LoadClass[12pt,a4paper,chapter=TITLE,section=TITLE]{abntex2}
 
 \RequirePackage{hyperref}
 
 \RequirePackage{enumitem}
 
 \RequirePackage{ragged2e}
+
+\RequirePackage[fleqn]{amsmath}
 
 
 %%% Configuração das margens do documento.
@@ -50,18 +52,19 @@
 
 
 %%% Configuração do espaçamento entre títulos e texto
-%\setlength{\afterchapskip}{1cm}
+\setlength{\afterchapskip}{0pt}
 
 %%% Configuração do alinhamento da 1ª linha dos parágrafos.
 \setlength{\parindent}{0mm}
 
 %%% Espaçamento entre parágrafos
-\setlength{\parskip}{1\baselineskip}
+\setlength{\parskip}{12pt}
 
 %%% Espaçamento entre itens de listas
-\setlist{parsep=\parskip,leftmargin=1.2em}
+\setlist{parsep=12pt,leftmargin=1.2em}
 
-
+%%% Pelas normas do Ifes, as equações devem ser alinhadas à esquerda
+\setlength{\mathindent}{0pt}
 
 %%% Configura a fonte para serifada (Latin Modern) ou sem serifa
 %%% (Helvética) conforme o valor da variável `times'. O padrão é
@@ -226,13 +229,12 @@
 % ---
 
 
-%%% Definição do ambiente `quadro' e do comando ----------------------
 %%% ---
+\newcommand{\quadroname}{Quadro}
+\newfloat{quadro}{loq}{\quadroname}
 \newcommand{\listadequadrosname}{Lista de quadros}
 \newlistof{listadequadros}{loq}{\listadequadrosname}
 \newlistentry{quadro}{loq}{0}
-\newcommand{\quadroname}{Quadro}
-\newfloat{quadro}{loq}{\quadroname}
 \renewcommand{\cftquadroname}{\quadroname\space} 
 \renewcommand{\cftquadroaftersnum}{\hfill\textendash\hfill}
 %%% ---
@@ -244,14 +246,14 @@
   \begin{capa}
     \center
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirinstituicao}}\\
-    \vspace{1\baselineskip}
+%    \vspace{1\baselineskip}
     {\ABNTEXchapterfontsize\MakeTextUppercase{\imprimircurso}}\\
     %
-    \vspace{2.5cm}
+    \vspace{3.0cm}
     %
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
     %
-    \vspace*{2.5cm}
+    \vspace*{3.0cm}
     %
     \begin{center}
       \ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}\\
@@ -267,56 +269,14 @@
 }
 
 
-% ---
-% Conteudo padrao da Folha de Rosto
-\makeatletter
-\renewcommand{\folhaderostocontent}{
-  \begin{center}
-
-    % \vspace*{1cm}
-    {\ABNTEXchapterfont\large\imprimirautor}
-	
-    \vspace*{\fill}\vspace*{\fill}
-    \begin{center}
-      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-    \end{center}
-    \vspace*{\fill}
-	
-    \abntex@ifnotempty{\imprimirpreambulo}{%
-      \hspace{.45\textwidth}
-      \begin{minipage}{.5\textwidth}
-      	\SingleSpacing
-         \imprimirpreambulo
-       \end{minipage}%
-       \vspace*{\fill}
-    }%
-
-    {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-
-    {\large\imprimirorientadorRotulo~\imprimirorientador\par}
-    \abntex@ifnotempty{\imprimircoorientador}{%
-       {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-    }%
-    \vspace*{\fill}
-
-    {\large\imprimirlocal}
-    \par
-    {\large\imprimirdata}
-    % \vspace*{1cm}
-
-  \end{center}
-}
-\makeatother
-
-
-
 %%% Redefinição do comando de impressão da folha de rosto.
 %%% Para esta parte do código é necessário que o caracter arroba `@'
 %%% seja tratado como uma letra pelo LaTeX.
 \makeatletter
 \renewcommand{\folhaderostocontent}{
   \begin{center}
-    {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
+    {%\ABNTEXchapterfont
+    \ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
     %
     \vspace{4.5cm}
     %
@@ -352,6 +312,7 @@
 }
 \makeatother
 
+
 %%% ---
 %%% Declaração do Autor
 \newenvironment{declaracaodoautor}[1][\declaracaodoautorname]{%
@@ -371,6 +332,18 @@
 }
 \makeatother
 
+\renewcommand{\fonte}[2][\fontename]{%
+  \par\RaggedRight{\footnotesize{#1: #2}}
+}
+
+\renewcommand{\nota}[2][\notaname]{
+  \par\RaggedRight{\footnotesize{#1: #2}}
+}
+
+%%% O código abaixo é um RTP (Recurso Técnico Provisório, vulgo gambiarra) para
+%%% fazer com que os títulos de seções ficassem em maiúsculas na TOC (Sumário).
+\let\ifesoldsection\section
+\renewcommand{\section}[1]{\ifesoldsection{\uppercase{#1}}}
 
 \endinput
 

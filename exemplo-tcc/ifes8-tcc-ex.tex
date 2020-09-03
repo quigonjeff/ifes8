@@ -1,8 +1,8 @@
-\documentclass[times,english,brazil,oneside]{ifes8}
+\documentclass[times,english,brazil,oneside,section=TITLE]{ifes8}
 
 \usepackage[utf8]{inputenc}
 \usepackage{lastpage}           % Usado pelo exemplo de ficha catalográfica
-\usepackage[alf]{abntex2cite}
+\usepackage[alf,abnt-full-initials=yes]{abntex2cite} % Esta opção é exigida pelas normas do ifes.
 \usepackage{microtype}          % para melhorias de justificação
 \usepackage{morefloats}         % permite mais floats
 \usepackage{listings}
@@ -11,6 +11,7 @@
 \usetikzlibrary[topaths]
 \usepackage{mathtools}
 \usepackage{xcolor}
+%\usepackage{subcaption}
 
 
 %%% Definição da linguagem padrão do documento (pacote babel) para
@@ -24,11 +25,12 @@
 \selectlanguage{brazil}
 
 
-%%% O código abaixo é um RTP (Recurso Técnico Provisório, vulgo gambiarra) para
-%%% fazer com que os títulos de seções ficassem em maiúsculas na TOC (Sumário).
-\let\originalsection\section
-\renewcommand{\section}[1]{\originalsection{\MakeTextUppercase{#1}}}
 
+%%% Ajuste do alinhament do caption de figuras, tabelas e quadros.
+\captionstyle{\raggedright}
+\normalcaption
+% \normalcaptionwidth
+% \captionwidth{\linewidth}
 
 
 %%% Define que todos os códigos fontes construídos com o ambiente
@@ -37,9 +39,9 @@
 
 \newcommand{\ifestex}{\textsf{Ifes$8$}}
 
-\titulo{Confecção de Monografias para Trabalhos de Conclusão de Curso
-  no Ifes --- \emph{Uma Abordagem Utilizando Classes de Preparação de
-    Documentos em \LaTeX2e}}
+\titulo{Confecção de Monografias para Trabalhos de Conclusão de Curso no Ifes
+  --- \emph{Uma Abordagem Utilizando Classes de Preparação de Documentos em
+    \LaTeX2e}}
 
 \autor{Alunus Alunovisk Alunovich}
 \autorficha{Alunovich, Alunus Alunovisk}
@@ -52,7 +54,6 @@
 
 \curso{Bacharelado em Sistemas de Informação}
 
-% \data{Fevereiro de 2018}
 \data{2018}
 
 \local{Serra}
@@ -70,7 +71,7 @@
 
 %%% A macro \pretextual não precisa ser explicitamente chamada porque
 %%% o abntex2 aciona essa macro no início do documento.
-%%% \pretextual
+% \pretextual
 
 \imprimircapa
 \addtocounter{page}{-1}
@@ -138,18 +139,21 @@
       {\footnotesize{\imprimirpreambulo}}\\
     \end{minipage}%
   \end{center}
-  \vspace{-1cm}%
+  % \vspace{-1cm}%
   \begin{center}
     Aprovado em 20 de fevereiro de 2018.\\[15mm]
     \textbf{COMISSÃO EXAMINADORA}\\[5mm]
     \assinatura{\imprimirorientador \\
       Instituto Federal do Espírito Santo \\
-      Orientadora}\vspace{-1cm}
+      Orientadora}
+    % \vspace{-1cm}
     \assinatura{\imprimircoorientador \\
       Instituto Federal do Espírito Santo \\
-      Coorientador}\vspace{-1cm}
+      Coorientador}
+    % \vspace{-1cm}
     \assinatura{Membro Convidado da Banca 1 \\
-      Instituição Externa 1}\vspace{-1cm}
+      Instituição Externa 1}
+    % \vspace{-1cm}
     \assinatura{Membro Convidado da Banca 2 \\
       Instituição Externa 2}
   \end{center}
@@ -158,28 +162,30 @@
 
 %%% --------------------------------------------------------------------
 %%% Ambiente para escrita da declaração do autor
-\begin{declaracaodoautor}
+%%% 2020-09-02: Jefferson Andrade. A declaração do autor não é mais necessária
+%%% nos trabalhos acadêmcios do Ifes.
+% \begin{declaracaodoautor}
 
-  \vspace*{1.5cm}
+%   \vspace*{1.5cm}
 
-  Declaro, para fins de pesquisa acadêmica, didática e
-  técnico-científica, que este Trabalho de Conclusão de Curso pode ser
-  parcialmente utilizado, desde que se faça referência à fonte e ao
-  autor.
+%   Declaro, para fins de pesquisa acadêmica, didática e
+%   técnico-científica, que este Trabalho de Conclusão de Curso pode ser
+%   parcialmente utilizado, desde que se faça referência à fonte e ao
+%   autor.
 
-  \vspace*{2.5cm}
+%   \vspace*{2.5cm}
 
-  \centering
+%   \centering
 
-  \imprimirlocal, 29 de setembro de 2018.
+%   \imprimirlocal, 29 de setembro de 2018.
 
-  \vspace*{2.5cm}
+%   \vspace*{2.5cm}
 
-  \imprimirautor
+%   \imprimirautor
 
-  \vspace*{\fill}
+%   \vspace*{\fill}
   
-\end{declaracaodoautor}
+% \end{declaracaodoautor}
 
 
 %%% ====================================================================
@@ -354,7 +360,7 @@ classe \ifestex.
 É altamente recomendável que os estudantes verifiquem, além da versão
 em PDF deste documento, também o seu código fonte em \LaTeX.
 
-\section{Uso Básico da Classe \ifestex}
+\section{Uso Básico da Classe Ifes8}
 \label{sec:uso-basico}
 
 Para utilizar a classe \ifestex\ no seu trabalho acadêmico,
@@ -363,7 +369,7 @@ classe. Isso é feito colocando-se a declaração abaixo como a primeira
 linha de código do seu documento.\vspace{\baselineskip}
 
 \begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[times,english,brazil]{ifes7}  
+  \documentclass[times,english,brazil]{ifes8}  
 \end{lstlisting}
 
 A opção \texttt{12pt} indica o tamanho padrão da fonte do texto,
@@ -575,29 +581,50 @@ Que é a mesma referência utilizada pelo \abnTeX. Assim, para atender
 explicado em \cite[p.~41]{Araujo2016}.
 
 \begin{table}[h!]
-  \IBGEtab{%
-    \caption[Um Exemplo de tabela alinhada conforme padrão IBGE]{Um
-      Exemplo de tabela alinhada que pode ser longa ou curta, conforme
+  % \IBGEtab{%
+  %   \caption[Um exemplo de tabela alinhada conforme padrão IBGE]{Um
+  %     exemplo de tabela alinhada que pode ser longa ou curta, conforme
+  %     padrão IBGE.}%
+  %   \label{tabela-ibge}
+  % }{%
+  %   \begin{tabular}{ccc}
+  %     \toprule
+  %     Nome           & Nascimento & Documento      \\
+  %     \midrule
+  %     \midrule
+  %     Maria da Silva & 11/11/1111 & 111.111.111-11 \\
+  %     Júlia da Silva & 12/11/1111 & 111.111.112-22 \\
+  %     Paulo da Silva & 13/11/1111 & 111.111.113-33 \\
+  %     Pedro da Silva & 14/11/1111 & 111.111.114-44 \\
+  %     \bottomrule
+  %   \end{tabular}%
+  % }{%
+  %   \fonte{Produzido pelos autores, 2017}%
+  %   \nota{Esta é uma nota, que diz que os dados são baseados na
+  %     regressão linear.}%
+  %   \nota[Anotações]{Uma anotação adicional, seguida de várias outras.}%
+  % }
+    \caption[Um exemplo de tabela alinhada conforme padrão IBGE]{Um
+      exemplo de tabela alinhada que pode ser longa ou curta, conforme
       padrão IBGE.}%
     \label{tabela-ibge}
-  }{%
-    \begin{tabular}{ccc}
-      \toprule
-      Nome           & Nascimento & Documento      \\
-      \midrule
-      \midrule
-      Maria da Silva & 11/11/1111 & 111.111.111-11 \\
-      Júlia da Silva & 12/11/1111 & 111.111.112-22 \\
-      Paulo da Silva & 13/11/1111 & 111.111.113-33 \\
-      Pedro da Silva & 14/11/1111 & 111.111.114-44 \\
-      \bottomrule
-    \end{tabular}%
-  }{%
+    \begin{center}
+      \begin{tabular}{ccc}
+        \toprule
+        Nome           & Nascimento & Documento      \\
+        \midrule
+        \midrule
+        Maria da Silva & 11/11/1111 & 111.111.111-11 \\
+        Júlia da Silva & 12/11/1111 & 111.111.112-22 \\
+        Paulo da Silva & 13/11/1111 & 111.111.113-33 \\
+        Pedro da Silva & 14/11/1111 & 111.111.114-44 \\
+        \bottomrule
+      \end{tabular}%
+    \end{center}
     \fonte{Produzido pelos autores, 2017}%
     \nota{Esta é uma nota, que diz que os dados são baseados na
       regressão linear.}%
     \nota[Anotações]{Uma anotação adicional, seguida de várias outras.}%
-  }
 \end{table}
 
 A Tabela~\ref{tabela-ibge}, é o mesmo exemplo apresentado no manual da
@@ -605,11 +632,27 @@ classe \abnTeX, inserida aqui apenas a título de demonstração.
 
 
 \begin{quadro}[htb]
-  \IBGEtab{
-    \caption{Exemplo de uso de \texttt{cline} para formatação de
-      tabelas.}
+  % \IBGEtab{
+  %   \caption{Exemplo de uso de \texttt{cline} para formatação de
+  %     tabelas.}
+  %   \label{tab:ex2}
+  % }{
+  %   \begin{tabular}{|r|l|}
+  %     \hline
+  %     7C0         & hexadecimal \\
+  %     3700        & octal       \\ \cline{2-2}
+  %     11111000000 & binary      \\
+  %     \hline
+  %     \hline
+  %     1984        & decimal     \\
+  %     \hline
+  %   \end{tabular}
+  % }{
+  %   \fonte{\LaTeX/Tables, Basic examples \cite{Wikibook-LaTeX}.}
+  % }
+  \begin{center}
+    \caption{Exemplo de uso de \texttt{cline} para formatação de tabelas.}
     \label{tab:ex2}
-  }{
     \begin{tabular}{|r|l|}
       \hline
       7C0         & hexadecimal \\
@@ -620,9 +663,8 @@ classe \abnTeX, inserida aqui apenas a título de demonstração.
       1984        & decimal     \\
       \hline
     \end{tabular}
-  }{
     \fonte{\LaTeX/Tables, Basic examples \cite{Wikibook-LaTeX}.}
-  }
+  \end{center}
 \end{quadro}
 
 A Tabela~\ref{tab:ex2} ilustra o resultado o uso do comando
@@ -634,13 +676,35 @@ separando as linhas de dados, nem linhas horizontais separando as
 colunas.
 
 \begin{table}[h]
-  \ibgetab{
-    \caption[Exemplo de tabela em que é necessário quebras de
-    linha.]{Exemplo de tabela em que o texto é muito grande para caber
-      em uma única linha, e é necessário introduzir quebras de linha
-      dentro da célula.}
+  % \ibgetab{
+  %   \caption[Exemplo de tabela em que é necessário quebras de
+  %   linha.]{Exemplo de tabela em que o texto é muito grande para caber
+  %     em uma única linha, e é necessário introduzir quebras de linha
+  %     dentro da célula.}
+  %   \label{tab:ex3}
+  % }{
+  %   \begin{tabular}{lllp{5cm}}
+  %     \toprule
+  %     Day       & Min Temp & Max Temp & Summary                                                      \\
+  %     \midrule
+  %     Monday    & 11ºC     & 22ºC     & A clear day with lots of sunshine.  
+  %                                       However, the strong breeze will bring down the temperatures. \\
+  %     Tuesday   & 9ºC      & 19ºC     & Cloudy with rain, across many northern regions. Clear spells 
+  %                                       across most of Scotland and Northern Ireland, 
+  %                                       but rain reaching the far northwest.                         \\
+  %     Wednesday & 10ºC     & 21ºC     & Rain will still linger for the morning. 
+  %                                       Conditions will improve by early afternoon and continue 
+  %                                       throughout the evening.                                      \\
+  %     \bottomrule
+  %   \end{tabular}
+  % }{
+  %   \fonte{\LaTeX/Tables, Text wrapping in tables \cite{Wikibook-LaTeX}.}
+  % }
+  \begin{center}
+    \caption[Exemplo de tabela em que é necessário quebras de linha.]{Exemplo de
+      tabela em que o texto é muito grande para caber em uma única linha, e é
+      necessário introduzir quebras de linha dentro da célula.}
     \label{tab:ex3}
-  }{
     \begin{tabular}{lllp{5cm}}
       \toprule
       Day       & Min Temp & Max Temp & Summary                                                      \\
@@ -655,9 +719,8 @@ colunas.
                                         throughout the evening.                                      \\
       \bottomrule
     \end{tabular}
-  }{
     \fonte{\LaTeX/Tables, Text wrapping in tables \cite{Wikibook-LaTeX}.}
-  }
+  \end{center}
 \end{table}
 
 A Tabela~\ref{tab:ex3} apresenta um exemplo de tabela onde o texto em
@@ -682,8 +745,11 @@ figura.
 
 \begin{figure}[h]
   \centering
-  \caption{Diagrama de Venn indicando porque \LaTeX{} é melhor que M\$
-    Word.}
+  \caption{Diagrama de Venn indicando porque \LaTeX{} é melhor que M\$ Word.
+    Continuando esta legenda para exceder o tamanho de uma linha de texto.
+    Frequentemente não é necessário tanto, entretanto em algumas situações a
+    lengenda deve ser mais longa para explicar corretamente o conteúdo da
+    figura, quadro ou tabela.}
   \label{fig:ex1}
   \begin{tikzpicture}
     \begin{scope}[blend group = soft light]

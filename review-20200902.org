@@ -1,0 +1,70 @@
+# -*- mode: org; ispell-local-dictionary: "brasileiro"; -*-
+#+title: Notas sobre a Revisão de 2020-09-02
+#+author: Prof. Jefferson O. Andrade
+#+options: toc:nil
+#+latex_class: koma-article
+#+latex_header: \usepackage[main=brazil]{babel}
+#+latex_header: \usepackage[a4paper,margin=25mm,bottom=30mm]{geometry}
+
+
+Abaixo seguem as notas sobre os comentários feitos na revisão de 2020-09-02. As
+alterações seguem a indicações da prof.ª Dr.ª Karin Komati, baseadas na
+experiência da prof.ª com o uso da classe em vários TCC e nas respostas que a
+prof.ª tem recebido do setor de Biblioteca do Campus Serra do Ifes.
+
+
+* DONE Remover caractere com acento na descrição da classe
+  CLOSED: [2020-09-03 qui 16:31]
+
+  - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+  #+begin_example
+  \ProvidesClass{ifes8}[2018/02/22 Classe de trabalhos acadêmicos do Ifes]
+  #+end_example
+
+  - Este caractere as vezes causa erros de compilação.
+  - Eu não tenho certeza, mas acredito que tenha a ver com o encoding que está
+    configurados no projeto do Overleaf.
+
+* DONE Remover a declaração do aluno do exemplo
+  CLOSED: [2020-09-03 qui 16:31]
+  - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+  - Não existe mais a folha de "declaração" do aluno
+
+* DONE Forçar as equações a estarem alinhadas à esquerda
+  CLOSED: [2020-09-03 qui 16:31]
+
+  - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+  #+begin_example
+  \setlength\mathindent{0pt}
+  #+end_example
+
+  - Esta alteração na verdade é uma correção de bug. O caderno de norma do Ifes
+    realmente diz que as equações precisam estar alinhadas à esquerda.
+
+* DONE Mudar as referências mostrar nome completo dos autores
+  CLOSED: [2020-09-03 qui 16:31]
+  
+  - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+  #+begin_example
+  \citeoption{abnt-full-initials=yes}
+  #+end_example
+
+  - Embora a norma da ABNT permita o uso de abreviações nos nomes dos autores o
+    caderno de normas para elaboração de referências do Ifes de 2018 (Normas
+    para elaboração de referências – NBR 6023: documento impresso e/ou digital)
+    exige o nome completo dos autores.
+  - As normas de elaboração de referências do Ifes foram publicadas após a
+    última revisão desta classe (2017).
+
+* DONE Forçar as legendas a ficarem alinhadas à esquerda
+  CLOSED: [2020-09-03 qui 16:31]
+
+  - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+  #+begin_example
+  \captionsetup{justification=justified,singlelinecheck=false}
+  #+end_example
+
+  - As legendas de figuras, tabelas, quadros, etc. devem ficar alinhadas à
+    esquerda, com o primeiro caractere da segunda linha em diante (caso haja)
+    alinhado diretamente abaixo da primeira letra do título (Figura, Quadro,
+    Tabela, ...).

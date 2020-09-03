@@ -1,8 +1,8 @@
 ## Project specific files:
 auto/*
+*/auto/*
 docs/*
 temp/*
-exemplo-ifes7-tcc-*.pdf
 *.loq
 todo.pdf
 todo.tex
