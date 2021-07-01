@@ -1,3 +1,14 @@
+%%% Exemplo de uso da classe LaTeX Ifes8 para elaboração de trabalho acadêmicos
+%%% de acordo como as normas estabelecidas no documento “Normas para
+%%% Apresentação de Trabalhos Acadêmicos e Científicos: Documento Impresso e/ou
+%%% Digital”, 8ª edição -- nov/2017.
+%%% 
+%%% Para a versão mais recente desta classe verifique:
+%%% https://github.com/quigonjeff/ifes8
+%%%
+%%% Autor: Prof. Jefferson O. Andrade <jefferson.andrade@ifes.edu.br>
+%%% Data: 2021-07-01
+%%%
 \documentclass[times,english,brazil,oneside,section=TITLE]{ifes8}
 
 \usepackage[utf8]{inputenc}
@@ -5,14 +16,15 @@
 \usepackage[alf,abnt-full-initials=yes]{abntex2cite} % Esta opção é exigida pelas normas do ifes.
 \usepackage{microtype}          % para melhorias de justificação
 \usepackage{morefloats}         % permite mais floats
-\usepackage{listings}
 \usepackage{blindtext}          % para gerar texto aleatório (dummy text)
 \usepackage{tikz}
 \usetikzlibrary[topaths]
 \usepackage{mathtools}
 \usepackage{xcolor}
-%\usepackage{subcaption}
-
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\input{configlistings}
 
 %%% Definição da linguagem padrão do documento (pacote babel) para
 %%% definir que certas porções do texto (como o resumo, por exemplo)
@@ -23,8 +35,6 @@
 %%% ...
 %%% \end{otherlanguage}
 \selectlanguage{brazil}
-
-
 
 %%% Ajuste do alinhament do caption de figuras, tabelas e quadros.
 \captionstyle{\raggedright}
@@ -37,8 +47,6 @@
 %%% `lstlisting' terão uma borda simples.
 \lstset{frame=single}
 
-\newcommand{\ifestex}{\textsf{Ifes$8$}}
-
 \titulo{Confecção de Monografias para Trabalhos de Conclusão de Curso no Ifes
   --- \emph{Uma Abordagem Utilizando Classes de Preparação de Documentos em
     \LaTeX2e}}
@@ -48,7 +56,7 @@
 
 \orientador{Prof. Dr. Jefferson O. Andrade}
 
-\coorientador{Prof.ª Dr.ª Fulana Detal Longname}
+\coorientadora{Prof.ª Dr.ª Fulana Detal Longname}
 
 \instituicao{Instituto Federal do Espírito Santo}
 
@@ -316,8 +324,7 @@
 
 
 %%% Sumário --- Table of Contents
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
+\imprimirsumario
 \cleardoublepage
 
 
@@ -635,7 +642,7 @@ classe \abnTeX, inserida aqui apenas a título de demonstração.
   % \IBGEtab{
   %   \caption{Exemplo de uso de \texttt{cline} para formatação de
   %     tabelas.}
-  %   \label{tab:ex2}
+  %   \label{qdr:ex2}
   % }{
   %   \begin{tabular}{|r|l|}
   %     \hline
@@ -651,8 +658,8 @@ classe \abnTeX, inserida aqui apenas a título de demonstração.
   %   \fonte{\LaTeX/Tables, Basic examples \cite{Wikibook-LaTeX}.}
   % }
   \begin{center}
-    \caption{Exemplo de uso de \texttt{cline} para formatação de tabelas.}
-    \label{tab:ex2}
+    \caption{Exemplo de uso de \texttt{cline} para formatação de quadros.}
+    \label{qdr:ex2}
     \begin{tabular}{|r|l|}
       \hline
       7C0         & hexadecimal \\
@@ -667,7 +674,7 @@ classe \abnTeX, inserida aqui apenas a título de demonstração.
   \end{center}
 \end{quadro}
 
-A Tabela~\ref{tab:ex2} ilustra o resultado o uso do comando
+O Quadro~\ref{qdr:ex2} ilustra o resultado o uso do comando
 \verb!\cline! para criar linhas de separação (bordas) em apenas
 algumas das colunas de uma tabela. Note que este exemplo consta apenas
 para ilustrar as capacidades de formatação de tabelas do \LaTeX. As
@@ -879,6 +886,88 @@ Supondo que o tema em questão vá além das quatro operações básicas da
 aritmética, assumimos que a regra de ``interromper depois'' valha
 também para os outros operadores matemáticos.
 
+
+\section{Formatação de Códigos Fonte}
+
+Em trabalhos das áreas de Ciência Exatas e da Terra, e de Engenharias,
+frequentemente é necessário incluir a listagem de algoritmos, ou de programas de
+computador no trabalho acadêmico.
+
+De um modo geral, é preferível incluir o algoritmo em um nível mais abstrato
+do que incluir o código fonte em linguagem de programação. O algoritmo permite
+que o leitor que deseja repetir o trabalho escolha a linguagem que preferir e
+implemente o algoritmo nela com mais facilidade.
+
+Para a formatação de algoritmos, recomenda-se o uso do pacote
+\texttt{algpseudocode}. Caso você prefira apresentar seus algoritmos com
+pseudocódigo em português, procure o pacote
+\href{https://github.com/quigonjeff/algpseudocodept}{\texttt{algpseudocodept}}.
+Os comandos e a forma de uso do \texttt{algpseudocodept} são exatamente os
+mesmos do \texttt{algpseudocode}, as as palavras chaves serão traduzidas para o
+português.
+
+\begin{algorithm}
+  \caption{Euclid’s algorithm}
+  \label{alg:euclid}
+  \begin{algorithmic}[1]
+    \Procedure{Euclid}{$a,b$}
+    \Comment{The g.c.d. of a and b}
+    \State $r\gets a\bmod b$
+    \While{$r\not=0$}\Comment{We have the answer if r is 0}
+      \State $a\gets b$
+      \State $b\gets r$
+      \State $r\gets a\bmod b$
+    \EndWhile\label{euclidendwhile}
+    \State \textbf{return} $b$\Comment{The gcd is b}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+O Algoritmo~\ref{alg:euclid} é um exemplo extraído da documentação do pacote
+\texttt{algpseudocode} e ilustra a aparência de um algoritmo em pseudocódigo
+formatado com esse pacote.
+
+Caso seja necessário incluir listagem de código fonte em linguagens de
+programação, recomenda-se o uso do pacote \texttt{listrings}. Este pacote
+é capaz de lidar com uma variedade muito grande de linguagens de programação,
+mas tem problemas para lidar com caracteres acentuados. Para evitar estes
+problemas é necessário utilizar uma tabela de conversão. Esta tabela \texttt{já
+  está pronta} para ser usada no arquivo \texttt{configlistings.tex} que é
+incluído no preâmbulo deste arquivo. Você não precisa escrever as configurações
+do \texttt{listings} de novo, basta usar o arquivo \texttt{configlistings.tex}
+deste exemplo.
+
+\begin{lstlisting}[language=Python,float,label=lst:cocktailsort,caption={Algoritmo de
+ordenação \emph{Cocktail sort} com limites deslocáveis.}]
+def cocktailshiftingbounds(A):
+    beginIdx = 0
+    endIdx = len(A) - 1
+ 
+    while beginIdx <= endIdx:
+        newBeginIdx = endIdx
+        newEndIdx = beginIdx
+        for ii in range(beginIdx,endIdx):
+            if A[ii] > A[ii + 1]:
+                A[ii+1], A[ii] = A[ii], A[ii+1]
+                newEndIdx = ii
+ 
+        endIdx = newEndIdx
+ 
+        for ii in range(endIdx,beginIdx-1,-1):
+            if A[ii] > A[ii + 1]:
+                A[ii+1], A[ii] = A[ii], A[ii+1]
+                newBeginIdx = ii
+ 
+        beginIdx = newBeginIdx + 1
+ 
+test1 = [7, 6, 5, 9, 8, 4, 3, 1, 2, 0]
+cocktailshiftingbounds(test1)
+print(test1)
+ 
+test2=list('big fjords vex quick waltz nymph')
+cocktailshiftingbounds(test2)
+print(''.join(test2))
+\end{lstlisting}
 
 \section{Formatação de Citações}
 \label{sec:format-citac}

@@ -4,10 +4,6 @@ auto/*
 docs/*
 temp/*
 *.loq
-todo.pdf
-todo.tex
-review-*.pdf
-review-*.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

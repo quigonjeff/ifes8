@@ -7,12 +7,15 @@
 %%% Esta classe é baseada na classe abnTeX2 versão 1.9.6 de 26 de
 %%% fevereiro de 2016 [http://www.abntex.net.br/], que por sua vez é
 %%% baseada na classe memoir.
+%%%
+%%% Para a versão mais recente desta classe verifique:
+%%% https://github.com/quigonjeff/ifes8
 %%% 
 %%% Autor: Prof. Jefferson O. Andrade <jefferson.andrade@ifes.edu.br>
 %%% Data: 2018-02-22
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{ifes8}[2018/02/22 Classe de trabalhos academicos do Ifes]
+\ProvidesClass{ifes8}[2021/07/01 Classe de trabalhos academicos do Ifes]
 
 \RequirePackage{ifthen}
 
@@ -37,6 +40,8 @@
 \RequirePackage{ragged2e}
 
 \RequirePackage[fleqn]{amsmath}
+
+\RequirePackage{subcaption}
 
 
 %%% Configuração das margens do documento.
@@ -163,7 +168,6 @@
   \renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
   % 
   \setlength{\cftbeforechapterskip}{0em}
-
 }{}
 
 
@@ -341,10 +345,69 @@
   \par\RaggedRight{\footnotesize{#1: #2}}
 }
 
+
+
+%%% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%% Comandos LaTeX que devem ser executados após o início do corpo do
+%%% documento, i.e., após o \begin{document}.
+%%%   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\AtBeginDocument{%
+  \setlength{\abovecaptionskip}{5pt} % espaçamento antes da legenda de
+                                % tabelas/figuras 
+  \setsecnumformat{\csname the#1\endcsname\space}  % Formata o número das seções
+                                % de acordo com a norma
+  \renewcommand{\afterchapternum}{\hspace{-4pt}}  % Ajusta o espaçamento após o
+                                % título dos capítulos
+  \captionsetup{justification=justified,singlelinecheck=false} % ajusta a
+                                % formatação da legendas das figuras à norma
+}
+
+%%% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%% Definição de comando específicos da classe do Ifes.
+%%% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 %%% O código abaixo é um RTP (Recurso Técnico Provisório, vulgo gambiarra) para
 %%% fazer com que os títulos de seções ficassem em maiúsculas na TOC (Sumário).
 \let\ifesoldsection\section
 \renewcommand{\section}[1]{\ifesoldsection{\uppercase{#1}}}
+
+%%% Define o comando \imprimesumario
+\providecommand{\imprimirsumario}{}
+\renewcommand{\imprimirsumario}{
+  \renewcommand{\contentsname}{SUMÁRIO}%
+  \pdfbookmark[0]{\contentsname}{toc}%
+  \tableofcontents*%
+}
+
+%%% O título da seção primária “Referências” tem que ser alterado para ficar
+%%% todo em maiúsculas (porque sim, aparentemente...)
+\providecommand{\bibname}{}
+\renewcommand{\bibname}{REFERÊNCIAS}
+
+%%% O título da divisão de parte de  “Apêndices” tem que ser alterado para ficar
+%%% todo em maiúsculas (também porque sim...)
+\providecommand{\apendicesname}{}
+\renewcommand{\apendicesname}{APÊNDICES}
+
+%%% Define o comando \ifestex
+\providecommand{\ifestex}{}
+\renewcommand{\ifestex}{Ifes\TeX}
+
+%%% Define o valor padrão para o rótulo de orientadora
+\providecommand{\orientadoraname}{}
+\renewcommand{\orientadoraname}{Orientadora:}
+
+%%% Define o comando \orientadora
+\providecommand{\orientadora}{}
+\renewcommand{\orientadora}[2][\orientadoraname]{\orientador[#1]{#2}}
+
+%%% Define o valor padrão para o rótulo de orientadora
+\providecommand{\coorientadoraname}{}
+\renewcommand{\coorientadoraname}{Coorientadora:}
+
+%%% Define o comando \orientadora
+\providecommand{\coorientadora}{}
+\renewcommand{\coorientadora}[2][\coorientadoraname]{\coorientador[#1]{#2}}
 
 \endinput
 

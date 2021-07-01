@@ -1,0 +1,498 @@
+#+TITLE: Classe LaTeX para Documentos Acadêmicos do Ifes
+#+SUBTITLE: Segundo as Normas para Apresentação de Trabalhos Acadêmicos e Científicos, 8ª edição revista e ampliada
+#+AUTHOR: Prof. Dr. Jefferson O. Andrade
+#+EMAIL: jefferson.andrade@ifes.edu.br
+#+LATEX_CLASS: scrartcl
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_HEADER: \usepackage[main=brazil]{babel}
+#+LATEX_HEADER: \usepackage{fullpage}
+
+* Sobre o log de Revisões
+
+  Sempre haverá uma revisão em curso. Todas as alterações que surgirem entre
+  dois /commits/ consecutivos entrarão na *Revisão em Curso*, quando ocorrer o
+  próximo /commit/ a /Revisão em Curso/ se tornará a revisão da data do /commit/
+  e uma nova /Revisão em Curso/ será criada.
+  
+
+* Revisão em Curso
+
+** TODO Ajustar a legenda do ambiente ~lstlisting~ à norma
+   
+** TODO Ajusta a legenda do ambiente ~algorithm~ à norma
+
+** TODO Criar /autorefs/ para quadro, algoritmos e listagens
+
+* Revisão de 2021-09-01
+
+** DONE Criar template para a classe no Overleaf
+   CLOSED: [2021-07-01 Thu 11:38]
+
+   - State "DONE"       from "TODO"       [2021-07-01 Thu 11:38]
+** DONE Criar o comando para imprimir o sumário
+   CLOSED: [2021-07-01 Thu 11:38]
+   - State "DONE"       from "TODO"       [2021-07-01 Thu 11:38]
+   * O sumário precisa ter o título todo em maiúsculas.
+   * O sumário precisa aparecer no próprio sumário e no /table of contents/ do
+     pdf.
+   
+** DONE Ajustar títulos de Referências e Apêndices para maiúsculas
+   CLOSED: [2021-07-01 Thu 11:38]
+   - State "DONE"       from "TODO"       [2021-07-01 Thu 11:38]
+   * Porque as bibliotecárias querem que os documentos acadêmicos fiquem
+     exatamente como se tivessem sido preparados em uma máquina de escrever
+     de 1970.
+
+** DONE Criar o comando =\ifestex=
+   CLOSED: [2021-07-01 Thu 11:38]
+   - State "DONE"       from "TODO"       [2021-07-01 Thu 11:38]
+   * Deve ser impresso como “IfesTeX”
+
+** DONE Criar os comandos =\orientadora= e =\coorientadora=
+   CLOSED: [2021-07-01 Thu 11:38]
+   - State "DONE"       from "TODO"       [2021-07-01 Thu 11:38]
+   * Para não ter que ficar passando o parâmetro para os comandos “masculinos”
+     sempre que for uma (co)orientadora.
+
+** DONE Inserir código ~AtBeginDocument~ para ajustes de formatação
+   CLOSED: [2021-07-01 Thu 11:38]
+   - State "DONE"       from "TODO"       [2021-07-01 Thu 11:38]
+   * Diversos pontos menores:
+     - Ajuste de espaçamento acima dos captions
+     - Ajuste do espaço entre o número e o título das seções
+     - Ajuste do espaçamento após o título das seções primárias (capítulos)
+     - Ajuste da formatação das legendas de figuras.
+
+* Revisão de 2020-09-02
+   
+Abaixo seguem as notas sobre os comentários feitos na revisão de 2020-09-02. As
+alterações seguem a indicações da prof.ª Dr.ª Karin Komati, baseadas na
+experiência da prof.ª com o uso da classe em vários TCC e nas respostas que a
+prof.ª tem recebido do setor de Biblioteca do Campus Serra do Ifes.
+
+
+** DONE Remover caractere com acento na descrição da classe
+   CLOSED: [2020-09-03 qui 16:31]
+
+   - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+   #+begin_example
+   \ProvidesClass{ifes8}[2018/02/22 Classe de trabalhos acadêmicos do Ifes]
+   #+end_example
+
+   - Este caractere as vezes causa erros de compilação.
+   - Eu não tenho certeza, mas acredito que tenha a ver com o encoding que está
+     configurados no projeto do Overleaf.
+
+** DONE Remover a declaração do aluno do exemplo
+   CLOSED: [2020-09-03 qui 16:31]
+   - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+   - Não existe mais a folha de "declaração" do aluno
+
+** DONE Forçar as equações a estarem alinhadas à esquerda
+   CLOSED: [2020-09-03 qui 16:31]
+
+   - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+   #+begin_example
+   \setlength\mathindent{0pt}
+   #+end_example
+
+   - Esta alteração na verdade é uma correção de bug. O caderno de norma do Ifes
+     realmente diz que as equações precisam estar alinhadas à esquerda.
+
+** DONE Mudar as referências mostrar nome completo dos autores
+   CLOSED: [2020-09-03 qui 16:31]
+  
+   - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+   #+begin_example
+   \citeoption{abnt-full-initials=yes}
+   #+end_example
+
+   - Embora a norma da ABNT permita o uso de abreviações nos nomes dos autores o
+     caderno de normas para elaboração de referências do Ifes de 2018 (Normas
+     para elaboração de referências – NBR 6023: documento impresso e/ou digital)
+     exige o nome completo dos autores.
+   - As normas de elaboração de referências do Ifes foram publicadas após a
+     última revisão desta classe (2017).
+
+** DONE Forçar as legendas a ficarem alinhadas à esquerda
+   CLOSED: [2020-09-03 qui 16:31]
+
+   - State "DONE"       from "TODO"       [2020-09-03 qui 16:31]
+   #+begin_example
+   \captionsetup{justification=justified,singlelinecheck=false}
+   #+end_example
+
+   - As legendas de figuras, tabelas, quadros, etc. devem ficar alinhadas à
+     esquerda, com o primeiro caractere da segunda linha em diante (caso haja)
+     alinhado diretamente abaixo da primeira letra do título (Figura, Quadro,
+     Tabela, ...).
+
+    
+* Revisão de 2017-12-01
+
+Abaixo seguem as notas sobre os comentários feitos na revisão de 2017-12-01. Os
+comentários dos revisores foram feitos diretamente no documento PDF. A numeração
+de página indicada nos títulos abaixo se refere à paginação do documento onde os
+comentários foram feitos. Após as alterações solicitadas a numeração das páginas
+(no documento novo) foi alterada.
+
+** DONE Capa (Página 1)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - A distância entre o nome do instituto e o nome do curso foi alterada para
+     1,5 entrelinhas. Alteração realizada na classe.
+
+
+** DONE Folha de Rosto (Página 2)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - Foi solicitado que o título do trabalho fosse impresso mas próximo do centro
+     vertical da página. Deste modo, a distância entre o nome do aluno e o título
+     do trablaho foi aumentada de 1,5cm para 4,5cm.
+
+   - O texto do preambulo já está com espaçamento entrelinhas simples.
+
+
+** DONE Folha de Aprovação (Página 4)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - O texto do preambulo já está com espaçamento entrelinhas simples.
+
+
+** DONE Lista de Abreviaturas (Página 14)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - As abreviaturas e seus significados foram ajustados para inicial maiúscula,
+     conforme indicado.
+
+   - Foi acrescentado um hífen entre a abreviatura e seu significado, conforme
+     indicado.
+
+
+** DONE Lista de Siglas (Página 15)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - Foi acrescentado um hífen entre a sigla e seu significado, conforme
+     indicado.
+
+
+** DONE Lista de Símbolos (Página 16)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - Foi acrescentado um hífen entre o símbolo e seu significado, conforme
+     indicado.
+
+
+** DONE Sumário (Página 17)
+   CLOSED: [2021-07-01 Thu 08:49]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:49]
+   - A contagem de páginas foi ajustada para ignorar a capa e a ficha
+     catalográfica. Desta forma a primeira página textual passou a ser a página
+     15 ao invés de 17 como estava anteriormente.
+
+   - No sumário, foi removida a formatação em negrito nas seções secundárias,
+     terciárias, quaternárias e quinárias.
+
+   - Na construção do Sumário, apêndices e anexos são tratados pelo \LaTeX
+     exatamente da mesma forma que capítulos. Desta forma, não existe um
+     mecanismo simples para formatá-los de modo diferentes dos capítulos. Será
+     necessário reimplementar a forma como o Sumário é construído. Esse
+     procedimento é moderadamente complexo e levará algumas semanas.
+
+
+** DONE Capítulo 1 -- Introdução (Página 17)
+   CLOSED: [2021-07-01 Thu 08:50]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:50]
+   - A contagem de páginas já foi ajustada para ignorar a capa e a ficha
+     catalográfica, deste modo o número da primeira página textual é 15, conforme
+     indicado.
+
+   - A distância entre o título dos capítulos e o texto foi alterada para 1,5
+     entrelinhas, conforme solicitado.
+
+   - A formatação das entradas para seções secundárias, terciárias, quaternárias,
+     e quinárias foi alterada conforme indicado.
+
+
+** DONE Capítulo 2 -- Seção Primária (Página 24)
+   CLOSED: [2021-07-01 Thu 08:50]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:50]
+   - O espaçamento entre os títulos dos capítulos e o texto foi ajustado conforme
+     indicado (1,5 baseline) para todos os capítulos.
+
+
+** DONE Tabela 1 (Página 29)
+   CLOSED: [2021-07-01 Thu 08:50]
+
+   - State "DONE"       from              [2021-07-01 Thu 08:50]
+   - Foi incluído o ano na linha “Fonte”, conforme solicitado.
+
+
+** Revisão de 2016-09-29
+
+   Esta revisão foi feita ainda antes da publicação da norma, quando a comissão
+   estava avaliando se seriva viável ter um modelo em \LaTeX{} como “oficial”
+   para ser aceito pelas bibliotecas do Ifes.
+
+*** DONE Capa
+    CLOSED: [2021-07-01 Thu 08:51]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:51]
+  1. Há uma anotação que diz apenas “CH”. O que é isso?
+
+  2. O item “Campus Serra” foi removido da identificação de
+     instituição. 
+   
+     Não haverá qualquer indicação de a qual campus o aluno pertence?
+     Por quê?
+
+  3. Espaçamento entre instituição e curso foi ajustado para 1,5 cm.
+
+  4. Todos os textos presentes na capa estão com fonte em tamanho 12pt,
+     conforme recomendado. (Já estavam antes.)
+
+  5. A fonte usada na capa (neste exemplo) *não é* Arial/Heuvetica.
+
+     Este exemplo foi composto com fonte Times New/Latin Modern. Isso
+     inclui as fontes de títulos e da capa. Este entendimento advém do texto
+     do caderno de normas do Ifes (pag. 32):
+
+     #+begin_quote
+     todo o texto deve ser escrito em língua portuguesa e digitado em
+     fonte Arial ou Times New Roman, tamanho 12, inclusive a capa
+     (parte externa) e os elementos pré-textuais e pós-textuais (parte
+     interna). A opção da fonte escolhida deve ser adotada em todo o
+     texto.
+     #+end_quote
+
+     Assim, como o texto está em Latin Modern (Times), os títulos também
+     estão.
+
+  6. As fontes de local e data já estão com tamanho 12pt.
+
+  7. A distância entre local e data na folha de rosto foi ajustada para
+     1,5cm.
+
+  8. O exemplo de uso da classe =ites7= foi alterado para impressão em
+     um só lado da folha.
+
+     A classe \LaTeX que está sendo gerada já funciona tanto para
+     impressão apenas em anverso quanto anverso e verso. Basta indicar o
+     parâmetro =oneside= ou =twoside= ao carregar a classe.
+
+*** DONE Pág. 1 -- Folha de Rosto
+    CLOSED: [2021-07-01 Thu 08:51]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:51]
+  1. O tamanho da fonte usada no preâmbulo (da folha de rosto) foi reduzido.
+
+  2. O espaçamento entre o preâmbulo e a identificação do orientador e
+     coorientador era de 1,5cm, e foi reduzido para 1cm.
+
+*** DONE Pág. 2 -- Ficha Catalográfica
+    CLOSED: [2021-07-01 Thu 08:51]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:51]
+  1. A ficha catalográfica pode ser gerada de qualquer forma que se
+     deseje -- inclusive o MS Word. Desde que ela esteja em formato
+     PDF, ela poderá ser incluída arquivo final através do comando
+     =\includepdf[pages=X]{file.pdf}=. Onde =X= é o número da página
+     que se quer incluir e =file.pdf= é o nome do arquivo que contém a
+     página.
+
+     Assim, supondo que a ficha catalográfica foi gravada como a 1ª
+     página de um arquivo chamado =ficha.pdf=, tudo o que o aluno tem
+     que fazer é digitar o comando:\\
+     =\includepdf[page=1]{ficha.pdf}=, e a ficha será incluída no
+     trabalho dele.
+
+*** DONE Pág 3 -- Folha de Aprovação
+    CLOSED: [2021-07-01 Thu 08:51]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:51]
+  1. A formatação da folha de aprovação foi corrigida.
+
+     Houve um descuido meu com relação à folha de aprovação. Quando a
+     distância entre parágrafos foi alterada para 15mm, isso fez com
+     que a folha de aprovação acabou ocupando 2 páginas.
+
+  2. A folha de aprovação foi ajustada para conformidade com o modelo
+     do Apêndice H.
+
+*** DONE Pág. 5 -- Declaração do Autor
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. A data na declaração do autor foi ajustada para o formato longo,
+     “29 de setembro de 2016”.
+
+*** DONE Pág. 7 -- Dedicatória
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  2. A dedicatória foi alinhada verticalmente para ficar no fundo da
+     página.
+
+  3. Na dedicatória a margem esquerda foi incrementada de 20% da
+     largura do texto.
+
+*** DONE Pág. 11 -- Epígrafe
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. A epígrafe está com espaçamento simples.
+
+*** DONE Pág. 13, 15 -- Resumo e Abstract
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. Foram acrescentadas as palavras-chave e keywords.
+
+*** DONE Pág. 17
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. O termo “Lista de Ilustrações” foi substituído por “Lista de Figuras”. 
+
+     Note-se, entretanto, que o título da seção 4.2.9 da norma ABNT
+     14724:2011 é *Lista de ilustrações* e no 1º parágrafo desta seção
+     lê-se: “\textbf{Quando necessário}, recomenda-se a elaboração de
+     lista própria para cada tipo de ilustração”.
+
+     Além disso, note-se também que na Seção 4 da ABNT NBR 14724:2011 o
+     Esquema 1, “Estrutura do trabalho acadêmico”, cita tanto o termo
+     “Lista de ilustrações”, quanto o termo “Lista de abreviaturas e
+     siglas”, como elementos pré-textuais. Conforme pode ser conferido
+     na reprodução do esquema abaixo:
+
+     [[./nbr14724-esquema1.png]]
+
+*** DONE Pág. 21
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. A “Lista de abreviaturas e siglas” foi dividida em duas lista
+     separadas, a “Lista de abreviaturas” e a “Lista de siglas”
+
+*** DONE Pág. 23 -- Lista de Símbolos
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. Na lista de símbolos o espaço entre o símbolo e a descrição foi
+     ajustado para 2 /em/ (duas vezes o tamanho da letra eme).
+
+*** DONE Pág. 25 -- Sumário
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. O espaçamento extra para distinguir os capítulos no sumário foi
+     eliminado.
+
+     Entretanto, creio que houve um engano na anotação sobre o
+     sumário. Não há na pág. 2 da norma ABNT NBR 14724:2011 uma seção
+     “Estrutura”. A Seção “Estrutura” é a seção 4 na pág. 5. O
+     “Sumário” é tratando na Seção 4.2.1.13, pág. 8 e remete à norma
+     ABNT NBR 6027.
+
+     A norma ABNT NBR 6027:2012, “Informação e documentação - Sumário -
+     Apresentação”, no seu item 6.2 define que:
+
+     #+begin_quote
+     Recomenda-se que a subordinação dos itens do sumário seja destacada
+     com a mesma apresentação tipográfica utilizada nas seções do 
+     documento.
+     #+end_quote
+    
+     Uma vez que no corpo do texto os títulos de capítulos possuem
+     espaçamento diferenciado em relação aos demais títulos se seções,
+     sub-seções, etc. Pareceu de acordo com a norma também haver
+     espaçamento diferenciado no sumário.
+
+  2. Foram acrescentados dois apêndices e um anexo. Antes dos início
+     dos apêndices foi inserida uma folha do o texto “APÊNDICES”
+     centralizado; de modo análogo, antes dos anexos foi inserida uma
+     folha com o texto “ANEXOS” centralizado. Esse comportamento segue
+     o que se verifica no livro de normas do Ifes, pág. 55.
+
+*** DONE Pág. 27
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. O espaço entre a numeração de identificação dos títulos de
+     capítulos, seções, etc., é de um caracter “M” maiúsculo.
+
+  2. O espaçamento entre parágrafos foi ajustado para a distância de 1
+     linha em branco -- ou seja, a distância entre o /baseline/ de duas
+     linha consecutivas dentro do mesmo parágrafo com espaçamento 
+     1,5 cm.
+
+     Entretanto, o Caderno de Normas do Ifes, na Seção 4.3.2, pág. 32,
+     diz: “Os parágrafos devem ser separados por um espaço de 1,5 cm
+     entre eles.”
+
+  3. A “nota” da Introdução foi convertida em uma nota de rodapé.
+
+*** DONE Pág. 29
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. O espaçamento entre itens das listas foi ajustado para o mesmo que
+     o espaçamento entre parágrafos.
+
+*** DONE Pág. 35
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  2. Exemplo de seção senária foi removido.
+
+*** DONE Pág. 42
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. O tamanho de fonte usado em “Fontes”, “Notas” e “Anotações” das
+     figuras e tabelas já estavam 10pt.
+
+  2. O tamanho das fontes usadas nos títulos de figuras e tabelas
+     também foi ajustado para 10pt.
+
+  3. Foram criados:
+     - O ambiente \LaTeX{} =quadro=, semelhante ao ambiente =table=, para
+       a criação de quadros.
+     - O comando \LaTeX{} =\listadequadros=, semelhante ao comando
+       =\listoftables=, para a criação automática da lista de quadros.
+
+*** DONE Pág. 44
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. As URL foram removidas das legendas das figuras, tabelas e quadros,
+     e as referências apropriadas foram inseridas em seus lugares.
+
+*** DONE Pág. 47
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. A referência foi ajustada em conformidade com o padrão.
+
+*** DONE Pág. 53
+    CLOSED: [2021-07-01 Thu 08:52]
+
+    - State "DONE"       from              [2021-07-01 Thu 08:52]
+  1. Os itens da bibliografia estão formatados com o texto ajustado à
+     esquerda. Como pode ser observado, por exemplo, nos itens (ARAUJO,
+     2016), (GUARINO, 2012) e (MASOLO, 2012).
+
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# ispell-local-dictionary: "brasileiro"
+# End:
