@@ -13,6 +13,12 @@
   dois /commits/ consecutivos entrarão na *Revisão em Curso*, quando ocorrer o
   próximo /commit/ a /Revisão em Curso/ se tornará a revisão da data do /commit/
   e uma nova /Revisão em Curso/ será criada.
+
+  *Nota:* O suporte do GitHub ao [[https://orgmode.org/][Org Mode]], na presente data [2021-07-01 Thu],
+  ainda deixa a desejar. O GitHub não mostra nenhuma das palavras chaves
+  relacionadas ao /status/ das atividades (TODO, NEXT, DONE, CANCELLED). Por
+  isso no texto abaixo só aparecem os títulos das atividades sem os seus
+  respectivos status.
   
 
 * Revisão em Curso
