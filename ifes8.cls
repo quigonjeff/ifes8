@@ -257,7 +257,7 @@
     %
     {\ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirautor}}\\
     %
-    \vspace*{3.0cm}
+    \vspace*{6.0cm}
     %
     \begin{center}
       \ABNTEXchapterfont\ABNTEXchapterfontsize\MakeTextUppercase{\imprimirtitulo}\\
